@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { subscribeLead } from '../../lib/supabase'
 
 export const metadata = {
   title: 'Free 30-Day Retirement Jumpstart Guide',
@@ -9,16 +10,27 @@ export const metadata = {
 
 export default function Jumpstart() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
+    setError('')
+
     const formData = new FormData(e.target)
     const email = formData.get('email')
     const name = formData.get('name')
     
-    // TODO: Connect to Supabase
-    console.log('Submit:', { name, email })
-    setSubmitted(true)
+    const result = await subscribeLead(name, email)
+    
+    setLoading(false)
+    
+    if (result.success) {
+      setSubmitted(true)
+    } else {
+      setError(result.error || 'Something went wrong')
+    }
   }
 
   if (submitted) {
@@ -59,6 +71,10 @@ export default function Jumpstart() {
             </li>
           </ul>
 
+          {error && (
+            <div className="bg-red-100 text-red-700 p-3 rounded mb-4">{error}</div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
@@ -72,9 +88,9 @@ export default function Jumpstart() {
                 className="w-full px-4 py-2 border rounded-lg"
               />
             </div>
-            <button type="submit" 
-              className="w-full bg-amber-500 text-emerald-900 py-3 rounded-lg font-semibold hover:bg-amber-400 transition">
-              Send Me the Free Guide
+            <button type="submit" disabled={loading}
+              className="w-full bg-amber-500 text-emerald-900 py-3 rounded-lg font-semibold hover:bg-amber-400 transition disabled:opacity-50">
+              {loading ? 'Sending...' : 'Send Me the Free Guide'}
             </button>
             <p className="text-sm text-gray-500 text-center">
               We respect your privacy. Unsubscribe anytime.
