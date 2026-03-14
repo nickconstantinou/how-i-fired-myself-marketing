@@ -5,6 +5,8 @@ export const metadata = {
   title: 'How I FIREd Myself - The Anti-Retirement Guide',
   description: "The anti-retirement guide for pre-retirees who aren't ready to stop—they're ready to start something new.",
 }
+
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
