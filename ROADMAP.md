@@ -17,16 +17,16 @@
 - [ ] Create 10+ SEO blog posts
 
 ## Phase 4: Lead Capture (Week 2-3)
-- [ ] Supabase setup (leads table)
-- [ ] Email capture form
-- [ ] Jumpstart lead magnet page
-- [ ] Thank you page with download
+- [x] Supabase setup (leads table)
+- [x] Email capture form
+- [x] Jumpstart lead magnet page
+- [x] Thank you page with download
 
 ## Phase 5: SEO & Polish (Week 3)
-- [ ] Meta tags on all pages
-- [ ] Open Graph tags
-- [ ] Sitemap.xml
-- [ ] robots.txt
+- [x] Meta tags on all pages
+- [x] Open Graph tags
+- [x] Sitemap.xml
+- [x] robots.txt
 - [ ] Mobile testing
 
 ## Phase 6: Launch (Week 3)
