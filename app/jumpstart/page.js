@@ -3,11 +3,6 @@
 import { useState } from 'react'
 import { subscribeLead } from '../../lib/supabase'
 
-export const metadata = {
-  title: 'Free 30-Day Retirement Jumpstart Guide',
-  description: 'Get clear. Get prepared. Get launched.',
-}
-
 export default function Jumpstart() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
