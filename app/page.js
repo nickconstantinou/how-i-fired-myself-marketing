@@ -11,7 +11,7 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-10 text-slate-200 max-w-2xl mx-auto leading-relaxed">
             The Anti-Retirement Guide for pre-retirees who aren't ready to stop—they're ready to escape and build something extraordinary.
           </p>
-          <Link href="/jumpstart" className="btn-primary text-lg">
+          <Link href="./jumpstart" className="btn-primary text-lg">
             Get the Free 30-Day Jumpstart Guide →
           </Link>
         </div>
@@ -25,7 +25,7 @@ export default function Home() {
             If any of these resonate, this book was written for you.
           </p>
           
-          <div className="grid gap-4 md:grid-cols-2 justify-items-center">
+          <div className="grid gap-4 md:grid-cols-2 w-full">
             {[
               "You're 50+ and thinking about retirement in the next 5-10 years",
               "You've done the math but still feel uncertain",
@@ -89,7 +89,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="font-bold text-center mb-12">What's Inside the Book</h2>
           
-          <div className="grid gap-6 md:grid-cols-2 mb-12 justify-items-center">
+          <div className="grid gap-6 md:grid-cols-2 mb-12 w-full">
             <div className="card w-full max-w-md">
               <h3 className="font-semibold mb-3 text-slate-800">Part 1: The Decision</h3>
               <ul className="space-y-2 text-slate-600">
@@ -152,7 +152,7 @@ export default function Home() {
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="font-bold text-center mb-12">What Readers Say</h2>
-          <div className="grid gap-6 md:grid-cols-3 justify-items-center">
+          <div className="grid gap-6 md:grid-cols-3 w-full">
             <blockquote className="card w-full max-w-md">
               <p className="text-slate-700 mb-4 italic">"I was 52 and terrified. Thought I'd made every mistake possible. This book showed me I still had options—and time. I'm now freelancing part-time, stress-free."</p>
               <cite className="block not-italic font-semibold text-amber-600">— Dave, 52</cite>
@@ -200,7 +200,7 @@ export default function Home() {
           <p className="text-lg mb-8 text-slate-200">
             Not sure if you're ready? Take this free challenge to get clarity on your next chapter.
           </p>
-          <Link href="/jumpstart" className="btn-primary text-lg">
+          <Link href="./jumpstart" className="btn-primary text-lg">
             Send Me the Free Guide →
           </Link>
         </div>
