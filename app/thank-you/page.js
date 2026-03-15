@@ -16,7 +16,7 @@ export default function ThankYou() {
         {/* Download Button - Direct download link */}
         <div className="mb-8">
           <a 
-            href="/jumpstart-guide.pdf" 
+            href="/jumpstart-guide.html" 
             download
             className="inline-block bg-amber-500 text-emerald-900 px-6 py-3 rounded-lg font-semibold hover:bg-amber-400 transition"
           >
