@@ -13,24 +13,6 @@ export default function RootLayout({ children }) {
       <head>
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
-        <script dangerouslySetInnerHTML={{__html: `
-          document.addEventListener('DOMContentLoaded', function() {
-            var toggle = document.getElementById('mobile-menu-toggle');
-            var menu = document.getElementById('mobile-menu');
-            if (toggle && menu) {
-              toggle.addEventListener('click', function() {
-                var isHidden = menu.classList.contains('hidden');
-                if (isHidden) {
-                  menu.classList.remove('hidden');
-                  toggle.setAttribute('aria-expanded', 'true');
-                } else {
-                  menu.classList.add('hidden');
-                  toggle.setAttribute('aria-expanded', 'false');
-                }
-              });
-            }
-          });
-        `}} />
         <style>{`
           body { font-family: 'Source Sans 3', system-ui, sans-serif; }
           h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
