@@ -59,7 +59,7 @@ const posts = {
       
       <h3>Week 1: The Honeymoon Phase</h3>
       
-      <p>The initial week felt like a extended vacation. I slept until noon some days, took long afternoon naps, and watched entire seasons of shows I'd been meaning to catch up on.</p>
+      <p>The initial week felt like an extended vacation. I slept until noon some days, took long afternoon naps, and watched entire seasons of shows I'd been meaning to catch up on.</p>
       
       <p>The liberation was real. The weight of responsibility lifted from my shoulders. I felt lighter, freer, more alive.</p>
       
@@ -694,25 +694,6 @@ const posts = {
       <p>Sometimes the best approach is complete honesty: "I'm in a transition right now. I left my career and I'm exploring what comes next."</p>
       
       <p>Most people respond to honesty with support and interest.</p>
-      
-      <h2>The Deeper Work: Finding Your New Identity</h2>
-      
-      <p>Here's what all this comes down to:</p>
-      
-      <p><strong>The 3 AM fear isn't telling you not to retire. It's telling you to retire wisely.</strong></p>
-      
-      <p>The fear is a feature, not a bug. It's your brain's way of saying: "This matters. Pay attention. Prepare well."</p>
-      
-      <p>Use the fear as motivation to:</p>
-      
-      <ul>
-        <li>Build more financial margin</li>
-        <li>Develop your non-work identity</li>
-        <li>Design your purpose intentionally</li>
-        <li>Nurture your relationships</li>
-      </ul>
-      
-      <p>Do those things, and the 3 AM fears will gradually quiet down—replaced by 3 AM peace.</p>
       
       <h2>The Deeper Work</h2>
       
