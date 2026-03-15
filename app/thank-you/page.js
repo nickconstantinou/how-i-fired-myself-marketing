@@ -16,7 +16,7 @@ export default function ThankYou() {
         {/* Download Button - Direct PDF download */}
         <div className="mb-8">
           <a 
-            href="/jumpstart-guide.pdf"
+            href="/how-i-fired-myself-marketing/jumpstart-guide.pdf"
             download
             className="inline-block bg-emerald-600 text-white text-2xl px-8 py-4 rounded-xl font-bold hover:bg-emerald-500 transition shadow-lg hover:shadow-xl transform hover:scale-105"
           >
@@ -26,7 +26,7 @@ export default function ThankYou() {
         
         <p className="text-lg">In the meantime, explore the blog for more retirement insights.</p>
         <Link 
-          href="/blog" 
+          href="/how-i-fired-myself-marketing/blog" 
           className="inline-block bg-amber-500 text-slate-900 px-6 py-3 rounded-full font-semibold hover:bg-amber-400 transition mt-4"
         >
           Browse Blog Posts
