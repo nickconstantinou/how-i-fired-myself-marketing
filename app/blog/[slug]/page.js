@@ -1902,7 +1902,7 @@ export default function BlogPost({ params }) {
     <main className="py-16">
       <article className="max-w-3xl mx-auto px-4">
         <Link 
-          href="/how-i-fired-myself-marketing/blog" 
+          href="/blog" 
           className="inline-flex items-center text-amber-600 hover:text-amber-700 mb-8 font-medium transition-colors"
         >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

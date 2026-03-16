@@ -11,25 +11,25 @@ export default function Navbar() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/how-i-fired-myself-marketing/" className="font-bold text-xl sm:text-2xl tracking-tight text-white">
+          <Link href="/" className="font-bold text-xl sm:text-2xl tracking-tight text-white">
             How I <span style={{color: '#d4af37', textShadow: '0 0 1px rgba(0,0,0,0.3)'}}>Escaped</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-6 lg:gap-8 items-center">
-            <Link href="/how-i-fired-myself-marketing/" className="text-slate-300 hover:text-amber-400 transition-colors text-sm lg:text-base">
+            <Link href="/" className="text-slate-300 hover:text-amber-400 transition-colors text-sm lg:text-base">
               Home
             </Link>
-            <Link href="/how-i-fired-myself-marketing/about" className="text-slate-300 hover:text-amber-400 transition-colors text-sm lg:text-base">
+            <Link href="/about" className="text-slate-300 hover:text-amber-400 transition-colors text-sm lg:text-base">
               About
             </Link>
-            <Link href="/how-i-fired-myself-marketing/blog" className="text-slate-300 hover:text-amber-400 transition-colors text-sm lg:text-base">
+            <Link href="/blog" className="text-slate-300 hover:text-amber-400 transition-colors text-sm lg:text-base">
               Blog
             </Link>
-            <Link href="/how-i-fired-myself-marketing/faq" className="text-slate-300 hover:text-amber-400 transition-colors text-sm lg:text-base">
+            <Link href="/faq" className="text-slate-300 hover:text-amber-400 transition-colors text-sm lg:text-base">
               FAQ
             </Link>
-            <Link href="/how-i-fired-myself-marketing/jumpstart" className="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-4 lg:px-5 py-2 lg:py-2.5 rounded-full font-semibold hover:from-amber-500 hover:to-amber-400 transition-all text-sm lg:text-base">
+            <Link href="/jumpstart" className="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-4 lg:px-5 py-2 lg:py-2.5 rounded-full font-semibold hover:from-amber-500 hover:to-amber-400 transition-all text-sm lg:text-base">
               Free Guide
             </Link>
           </div>
@@ -51,19 +51,19 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div id="mobile-menu" className={`${isOpen ? 'block' : 'hidden'} md:hidden mt-4 pb-4 border-t border-slate-800 pt-4`}>
           <div className="flex flex-col gap-4">
-            <Link href="/how-i-fired-myself-marketing/" className="text-lg text-slate-300 hover:text-amber-400 transition-colors py-2" onClick={() => setIsOpen(false)}>
+            <Link href="/" className="text-lg text-slate-300 hover:text-amber-400 transition-colors py-2" onClick={() => setIsOpen(false)}>
               Home
             </Link>
-            <Link href="/how-i-fired-myself-marketing/about" className="text-lg text-slate-300 hover:text-amber-400 transition-colors py-2" onClick={() => setIsOpen(false)}>
+            <Link href="/about" className="text-lg text-slate-300 hover:text-amber-400 transition-colors py-2" onClick={() => setIsOpen(false)}>
               About
             </Link>
-            <Link href="/how-i-fired-myself-marketing/blog" className="text-lg text-slate-300 hover:text-amber-400 transition-colors py-2" onClick={() => setIsOpen(false)}>
+            <Link href="/blog" className="text-lg text-slate-300 hover:text-amber-400 transition-colors py-2" onClick={() => setIsOpen(false)}>
               Blog
             </Link>
-            <Link href="/how-i-fired-myself-marketing/faq" className="text-lg text-slate-300 hover:text-amber-400 transition-colors py-2" onClick={() => setIsOpen(false)}>
+            <Link href="/faq" className="text-lg text-slate-300 hover:text-amber-400 transition-colors py-2" onClick={() => setIsOpen(false)}>
               FAQ
             </Link>
-            <Link href="/how-i-fired-myself-marketing/jumpstart" className="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-5 py-3 rounded-full font-semibold hover:from-amber-500 hover:to-amber-400 transition-all text-center mt-2" onClick={() => setIsOpen(false)}>
+            <Link href="/jumpstart" className="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-5 py-3 rounded-full font-semibold hover:from-amber-500 hover:to-amber-400 transition-all text-center mt-2" onClick={() => setIsOpen(false)}>
               Free Guide
             </Link>
           </div>

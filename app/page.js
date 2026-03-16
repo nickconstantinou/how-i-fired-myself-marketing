@@ -11,7 +11,7 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-10 text-slate-200 max-w-2xl mx-auto leading-relaxed">
             The Anti-Retirement Guide for pre-retirees who aren't ready to stop—they're ready to escape and build something extraordinary.
           </p>
-          <Link href="/how-i-fired-myself-marketing/jumpstart" className="btn-primary text-lg">
+          <Link href="/jumpstart" className="btn-primary text-lg">
             Get the Free 30-Day Jumpstart Guide →
           </Link>
         </div>
@@ -200,7 +200,7 @@ export default function Home() {
           <p className="text-lg mb-8 text-slate-200">
             Not sure if you're ready? Take this free challenge to get clarity on your next chapter.
           </p>
-          <Link href="/how-i-fired-myself-marketing/jumpstart" className="btn-primary text-lg">
+          <Link href="/jumpstart" className="btn-primary text-lg">
             Send Me the Free Guide →
           </Link>
         </div>

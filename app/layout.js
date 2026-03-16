@@ -42,11 +42,11 @@ export default function RootLayout({ children }) {
         <footer className="mt-auto py-14 bg-slate-950 text-slate-400 border-t border-slate-800">
           <div className="max-w-5xl mx-auto px-6 text-center">
             <div className="flex justify-center gap-8 mb-8 flex-wrap">
-              <Link href="/how-i-fired-myself-marketing/" className="hover:text-amber-400 transition-colors">Home</Link>
-              <Link href="/how-i-fired-myself-marketing/about" className="hover:text-amber-400 transition-colors">About</Link>
-              <Link href="/how-i-fired-myself-marketing/blog" className="hover:text-amber-400 transition-colors">Blog</Link>
-              <Link href="/how-i-fired-myself-marketing/faq" className="hover:text-amber-400 transition-colors">FAQ</Link>
-              <Link href="/how-i-fired-myself-marketing/jumpstart" className="hover:text-amber-400 transition-colors">Free Guide</Link>
+              <Link href="/" className="hover:text-amber-400 transition-colors">Home</Link>
+              <Link href="/about" className="hover:text-amber-400 transition-colors">About</Link>
+              <Link href="/blog" className="hover:text-amber-400 transition-colors">Blog</Link>
+              <Link href="/faq" className="hover:text-amber-400 transition-colors">FAQ</Link>
+              <Link href="/jumpstart" className="hover:text-amber-400 transition-colors">Free Guide</Link>
             </div>
             <p className="text-slate-500">© 2026 How I Escaped. All rights reserved.</p>
           </div>
