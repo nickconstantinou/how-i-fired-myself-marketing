@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Retirement is the worst planning mistake you could make. Discover a bold alternative for high achievers who refuse to wind down.">
+  <title>The Anti-Retirement Guide | Don't Wind Down. Design Forward.</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --col-navy:   #0B1F3A;
+      --col-rust:   #C0392B;
+      --col-amber:  #E67E22;
+      --col-cream:  #FDF6EC;
+      --col-ink:    #1A1A2E;
+      --col-mist:   #E8EDF2;
+      --col-white:  #FFFFFF;
+      --col-text:   #2C2C2C;
+      --col-subtext:#555555;
+      --col-border: #D0D7DE;
+      --col-success:#27AE60;
+      --font-head:  'Georgia','Times New Roman',serif;
+      --font-body:  'Helvetica Neue',Helvetica,Arial,sans-serif;
+      --radius:     8px;
+      --shadow:     0 4px 20px rgba(0,0,0,0.10);
+      --shadow-lg:  0 12px 40px rgba(0,0,0,0.15);
+      --max-w:      1100px;
+      --section-pad:80px 24px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--col-text);
+      background: var(--col-white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a  { color: var(--col-rust); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    h1,h2,h3,h4 {
+      font-family: var(--font-head);
+      color: var(--col-navy);
+      line-height: 1.2;
+    }
+
+    h1 { font-size: clamp(2.2rem,5vw,3.6rem); font-weight: 700; }
+    h2 { font-size: clamp(1.8rem,3.5vw,2.6rem); font-weight: 700; }
+    h3 { font-size: clamp(1.2rem,2.5vw,1.6rem); font-weight: 700; }
+    h4 { font-size: 1.1rem; font-weight: 600; }
+
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .subhead {
+      font-size: clamp(1.05rem,2vw,1.3rem);
+      color: var(--col-subtext);
+      font-weight: 300;
+      margin-top: 16px;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: var(--section-pad); }
+    section:nth-child(even) { background: var(--col-mist); }
+    section:nth-child(odd)  { background: var(--col-white); }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--col-rust);
+      color: var(--col-white);
+      box-shadow: 0 4px 16px rgba(192,57,43,0.35);
+    }
+    .btn-primary:hover {
+      background: #a93226;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(192,57,43,0.45);
+      text-decoration: none;
+      color: var(--col-white);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--col-white);
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--col-white);
+      text-decoration: none;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: var(--col-navy);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+    }
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar-logo {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--col-white);
+      letter-spacing: 0.5px;
+    }
+    .navbar-logo span { color: var(--col-amber); }
+    .navbar-cta { font-size: 0.85rem; padding: 10px 24px; }
+
+    /* HERO */
+    .hero {
+      background: var(--col-navy);
+      color: var(--col-white);
+      padding: 100px 24px 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle,rgba(192,57,43,0.18) 0%,transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle,rgba(230,126,34,0.12) 0%,transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(192,57,43,0.2);
+      border: 1px solid rgba(192,57,43,0.5);
+      color: var(--col-amber);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+    .hero h1 { color: var(--col-white); max-width: 820px; margin: 0 auto 24px; }
+    .hero h1 em { font-style: normal; color: var(--col-rust); }
+    .hero .subhead {
+      color: rgba(255,255,255,0.75);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      font-size: 1.15rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+    .hero-trust {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* PAIN */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .pain-card {
+      background: var(--col-white);
+      border: 1px solid var(--col-border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border-top: 4px solid var(--col-rust);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease;
+    }
+    .pain-card:hover { transform: translateY(-4px); }
+    .pain-icon { font-size: 2.2rem; margin-bottom: 16px; line-height: 1; }
+    .pain-card h3 { margin-bottom: 12px; }
+    .pain-card p  { color: var(--col-subtext); font-size: 0.95rem; }
+
+    /* SOLUTION */
+    .solution-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .solution-text h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      margin-top: 28px;
+    }
+    .solution-text h3:first-child { margin-top: 0; }
+    .solution-text ul {
+      list-style: none;
+      margin-top: 16px;
+    }
+    .solution-text ul li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      border-bottom: 1px solid var(--col-border);
+    }
+    .solution-text ul li::before {
+      content: '\2726';
+      position: absolute;
+      left: 0;
+      color: var(--col-amber);
+      font-size: 0.9rem;
+    }
+    .solution-visual {
+      background: var(--col-navy);
+      border-radius: 16px;
+      padding: 48px 36px;
+      color: var(--col-white);
+      text-align: center;
+    }
+    .solution-visual .big-quote {
+      font-family: var(--font-head);
+      font-size: 1.45rem;
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      color: var(--col-amber);
+    }
+    .solution-visual .attrib {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .solution-visual .stat-row {
+      display: flex;
+      gap: 32px;
+      margin-top: 36px;
+      justify-content: center;
+    }
+    .solution-visual .stat { text-align: center; }
+    .solution-visual .stat-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--col-amber);
+      font-family: var(--font-head);
+    }
+    .solution-visual .stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* LEAD CAPTURE */
+    .lead-capture {
+      background: var(--col-navy);
+      color: var(--col-white);
+      text-align: center;
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .lead-capture::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        -45deg,transparent,transparent 40px,
+        rgba(255,255,255,0.015) 40px,
+        rgba(255,255,255,0.015) 80px
+      );
+      pointer-events: none;
+    }
+    .lead-capture .container { position: relative; z-index: 1; }
+    .lead-capture h2 { color: var(--col-white); max-width: 700px; margin: 0 auto 16px; }
+    .lead-capture .subhead { color: rgba(255,255,255,0.7); margin-bottom: 40px; }
+    .lead-form {
+      background: var(--col-white);
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 560px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-lg);
+    }
+    .lead-form h3 { color: var(--col-navy); margin-bottom: 8px; }
+    .lead-form .deck-name {
+      color: var(--col-rust);
+      font-weight: 700;
+      font-family: var(--font-head);
+    }
+    .lead-form p { color: var(--col-subtext); font-size: 0.9rem; margin-bottom: 28px; }
+    .form-row { margin-bottom: 16px; text-align: left; }
+    .form-row label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--col-navy);
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .form-row input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--col-border);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-family: var(--font-body);
+      color: var(--col-ink);
+      transition: border-color 0.2s;
+    }
+    .form-row input:focus { outline: none; border-color: var(--col-rust); }
+    .form-row input::placeholder { color: #aaa; }
+    .lead-form .btn-primary { width: 100%; margin-top: 8px; font-size: 1.05rem; }
+    .form-footnote {
+      font-size: 0.75rem;
+      color: rgba(44,44,44,0.5);
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+    .form-footnote strong { color: var(--col-success); }
+
+    /* TESTIMONIALS */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .testi-card {
+      background: var(--col-white);
+      border: 1px solid var(--col-border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .testi-card::before {
+      content: '\201C';
+      font-family: var(--font-head);
+      font-size: 5rem;
+      color: var(--col-rust);
+      opacity: 0.15;
+      position: absolute;
+      top: 10px; left: 20px;
+      line-height: 1;
+    }
+    .testi-quote {
+      font-size: 0.95rem;
+      color: var(--col-text);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .testi-meta { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--col-navy);
+      color: var(--col-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: 0.9rem; color: var(--col-navy); }
+    .testi-role { font-size: 0.78rem; color: var(--col-subtext); }
+    .stars { color: var(--col-amber); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 12px; }
+
+    /* AUTHOR */
+    .author-section { background: var(--col-cream); padding: var(--section-pad); }
+    .author-inner {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 48px;
+      align-items: start;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .author-photo {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,var(--col-navy) 0%,#1a3a5c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--col-amber);
+      border: 5px solid var(--col-white);
+      box-shadow: var(--shadow-lg);
+      flex-shrink: 0;
+    }
+    .author-bio h3 { margin-bottom: 4px; }
+    .author-bio .age-line { font-size: 0.85rem; color: var(--col-subtext); margin-bottom: 16px; font-style: italic; }
+    .author-bio p { color: var(--col-subtext); font-size: 0.95rem; line-height: 1.8; }
+
+    /* FAQ */
+    .faq-list { max-width: 720px; margin: 48px auto 0; }
+    .faq-item { border-bottom: 1px solid var(--col-border); padding: 24px 0; }
+    .faq-q {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--col-navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      list-style: none;
+      padding-right: 8px;
+    }
+    .faq-q::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--col-rust);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-q.open::after { content: '\2212'; }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease,padding 0.35s ease;
+      color: var(--col-subtext);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .faq-a.open { max-height: 300px; padding-top: 14px; }
+
+    /* FOOTER CTA */
+    .footer-cta {
+      background: var(--col-rust);
+      padding: 80px 24px;
+      text-align: center;
+      color: var(--col-white);
+    }
+    .footer-cta h2 { color: var(--col-white); margin-bottom: 16px; }
+    .footer-cta p { color: rgba(255,255,255,0.8); margin-bottom: 32px; font-size: 1.05rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--col-navy);
+      color: rgba(255,255,255,0.55);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      line-height: 1.8;
+    }
+    footer a { color: rgba(255,255,255,0.7); }
+    footer a:hover { color: var(--col-amber); }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      :root { --section-pad: 60px 20px; }
+      .hero { padding: 70px 20px 70px; }
+      .solution-inner { grid-template-columns: 1fr; gap: 36px; }
+      .solution-visual .stat-row { flex-direction: column; gap: 16px; }
+      .author-inner { grid-template-columns: 1fr; text-align: center; }
+      .author-photo { margin: 0 auto; }
+      .lead-form { padding: 32px 24px; }
+      .navbar-cta { display: none; }
+      .hero-actions { flex-direction: column; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .testi-grid { grid-template-columns: 1fr; }
+      .pain-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+<script>
+  posthog.init('phc_IdAZHvksJADiN0p8Cm7H73jh5NT6oQaoYfUgaPPRB28', { api_host: 'https://app.posthog.com' })
+</script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-logo">The Anti-<span>Retirement</span> Guide</div>
+      <a href="#get-the-guide" class="btn btn-primary navbar-cta">Get the Free Guide</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="container">
+      <span class="hero-eyebrow">For High Achievers Aged 50–65</span>
+      <h1>Retirement is the <em>worst planning mistake</em> you could make.</h1>
+      <p class="subhead">If you've spent decades building, deciding, and driving &mdash; sitting on a beach won't fix you. It will break you. There's a bolder, braver path. And it's not what you think.</p>
+      <div class="hero-actions">
+        <a href="#get-the-guide" class="btn btn-primary">Download the Discovery Deck &mdash; Free</a>
+        <a href="#the-problem" class="btn btn-ghost">See Why Retirement Fails</a>
+      </div>
+      <p class="hero-trust">Trusted by 4,200+ UK high achievers &nbsp;&starf;&nbsp;&starf;&nbsp;&starf;&nbsp;&starf;&nbsp;&starf;</p>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM -->
+  <section id="the-problem">
+    <div class="container">
+      <div style="text-align:center; max-width:680px; margin:0 auto;">
+        <h2>You sold up. You stepped back. Now what?</h2>
+        <p class="subhead">The first few months feel like freedom. Then the silence kicks in.</p>
+      </div>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">&#128170;</div>
+          <h3>Identity Collapse</h3>
+          <p>Your job title was your shorthand for who you are. Without it, you're left staring at a stranger in the mirror wondering what the bloody hell you're supposed to be now.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">&#128260;</div>
+          <h3>Purpose Fallout</h3>
+          <p>You were defined by problems to solve and decisions to make. Now the phone doesn't ring, the inbox is empty, and the days blur together into an unsettling kind of nothing.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">&#128165;</div>
+          <h3>Energy with Nowhere to Go</h3>
+          <p>You still have decades of sharp thinking, hard-won experience, and serious stamina. But golf takes about four hours a week &mdash; and you're built for a lot more than that.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">&#128555;</div>
+          <h3>The Inner Martyr</h3>
+          <p>Your family keeps saying "just relax." But relaxing makes you feel useless. And the voice in your head that says you've got so much more to give isn't getting any quieter.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">&#127961;</div>
+          <h3>The Holiday Illusion</h3>
+          <p>Every long-weekend break feels like a reset &mdash; until you're back home on Tuesday wondering why the hell you spent Monday pretending to be interested in a National Trust caf&eacute;.</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon">&#128564;</div>
+          <h3>The Hidden Epidemic</h3>
+          <p>Retirement regret is real, underreported, and accelerating. Research shows abrupt disengagement is linked to cognitive decline, depression, and a significantly shortened horizon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE SOLUTION -->
+  <section id="the-solution" style="background: var(--col-mist);">
+    <div class="container">
+      <div style="text-align:center; max-width:680px; margin:0 auto 0;">
+        <h2>Stop winding down. Start designing forward.</h2>
+        <p class="subhead">Anti-retirement isn't about working until you drop. It's about making the next 20 years the most intentional of your life.</p>
+      </div>
+      <div class="solution-inner">
+        <div class="solution-text">
+          <h3>The Design Thinking Approach</h3>
+          <p>You didn't build a business by accident. You spotted gaps, took risks, iterated, and improved. That same mindset &mdash; applied deliberately to your own life &mdash; is what this guide teaches.</p>
+          <h3>It's Not About More Work</h3>
+          <p>Anti-retirement is about <em>directed energy</em>. The difference between a 70-hour week that drains you and a 50-hour week that lights you up is almost entirely about design.</p>
+          <h3>What You'll Discover</h3>
+          <ul>
+            <li>Why your &ldquo;retirement fantasy&rdquo; was someone else&rsquo;s plan for you</li>
+            <li>The 3 questions that expose what you actually want (not what you should want)</li>
+            <li>How to prototype your next chapter before you commit</li>
+            <li>Why &ldquo;I&rsquo;ll know when I see it&rdquo; is the most dangerous phrase in life planning</li>
+            <li>The quiet power of designed restlessness versus chronic dissatisfaction</li>
+          </ul>
+        </div>
+        <div class="solution-visual">
+          <div class="big-quote">&ldquo;The goal isn&rsquo;t to stop working.<br>The goal is to finally work on the right things.&rdquo;</div>
+          <div class="attrib">&mdash; Nick, The Anti-Retirement Guide</div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-num">72%</div>
+              <div class="stat-label">of pre-retirees feel unprepared for the identity shift</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">20yr</div>
+              <div class="stat-label">average &ldquo;healthy&rdquo; post-retirement window for high achievers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEAD CAPTURE -->
+  <section class="lead-capture" id="get-the-guide">
+    <div class="container">
+      <h2>Your Next Chapter Isn&rsquo;t Going to Write Itself</h2>
+      <p class="subhead">Download the free <span class="deck-name">&ldquo;What I Actually Want&rdquo; Discovery Deck</span> &mdash; 12 pages of sharp, practical exercises used by 4,200+ UK readers to redesign their post-career lives.</p>
+      <div class="lead-form">
+        <h3>Get Instant Access &mdash; It&rsquo;s Free</h3>
+        <p>No fluff. No spam. Just a genuinely useful tool to help you stop drifting and start designing.</p>
+        <form id="leadForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="e.g. Sarah" required autocomplete="given-name">
+          </div>
+          <div class="form-row">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.co.uk" required autocomplete="email">
+          </div>
+          <button type="submit" class="btn btn-primary">Send Me the Discovery Deck &#8594;</button>
+        </form>
+        <p class="form-footnote">
+          <strong>&#10003; Free forever.</strong> No card needed. Unsubscribe any time with one click.<br>
+          Used by ex-founders, GPs, directors, and one very stubborn management consultant from Leeds.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div style="text-align:center; max-width:600px; margin:0 auto;">
+        <h2>What Readers Are Saying</h2>
+        <p class="subhead">Real stories from people who thought retirement was the plan &mdash; and then changed their minds.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">&ldquo;I sold my manufacturing business at 56 and was completely untethered within eight months. The Discovery Deck made me confront what I actually wanted &mdash; not what my wife, my accountant, or my golf club mates thought I should want. I started a peer advisory group for other ex-founders. Best decision I&rsquo;ve made since the exit.&rdquo;</p>
+          <div class="testi-meta">
+            <div class="testi-avatar">TH</div>
+            <div>
+              <div class="testi-name">Trevor H.</div>
+              <div class="testi-role">Ex-Owner, Manufacturing &middot; Yorkshire &middot; 58</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">&ldquo;I was a GP partner for 22 years. When the practice changed hands and I found myself surplus, I genuinely didn&rsquo;t know who I was without the surgery. The book stopped me sleepwalking into the worst version of my future. Now I do medical consulting on my own terms &mdash; and I actually look forward to Mondays again.&rdquo;</p>
+          <div class="testi-meta">
+            <div class="testi-avatar">DM</div>
+            <div>
+              <div class="testi-name">Dr Deepa M.</div>
+              <div class="testi-role">GP Partner (Retired) &middot; Berkshire &middot; 55</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">&ldquo;I was made redundant from a FTSE 100 at 50 with a generous payoff and a Porsche. I equated it with having &lsquo;made it.&rsquo; Six months in, I was profoundly miserable. The book&rsquo;s chapter on designed restlessness gave me a framework to actually think through what I wanted from the next phase. I co-founded a small consultancy. Still drive the Porsche.&rdquo;</p>
+          <div class="testi-meta">
+            <div class="testi-avatar">SN</div>
+            <div>
+              <div class="testi-name">Simon N.</div>
+              <div class="testi-role">Ex-Finance Director &middot; Hertfordshire &middot; 54</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHOR -->
+  <section class="author-section" id="author">
+    <div class="container">
+      <div style="text-align:center; max-width:600px; margin:0 auto 48px;">
+        <h2>About the Author</h2>
+      </div>
+      <div class="author-inner">
+        <div class="author-photo">NH</div>
+        <div class="author-bio">
+          <h3>Nick H.</h3>
+          <div class="age-line">54 &middot; North Yorkshire, UK</div>
+          <p>Nick spent 25 years building and selling businesses before a mid-50s reckoning forced him to confront the question most high achievers avoid: &ldquo;What actually comes next &mdash; and do I even know what I want?&rdquo;</p>
+          <p style="margin-top:12px;">The Anti-Retirement Guide is the book he wishes had existed when he was sitting in a newly quiet house wondering why the hell he felt so lost after everything he&rsquo;d &ldquo;achieved.&rdquo; Nick writes for people who've done well by conventional measures and are quietly discovering that conventional measures don&rsquo;t actually satisfy.</p>
+          <p style="margin-top:12px;">He lives in North Yorkshire, is still working (by choice), and still hasn&rsquo;t taken up golf.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div style="text-align:center; max-width:600px; margin:0 auto;">
+        <h2>Frequently Asked Questions</h2>
+        <p class="subhead">Straight answers to the questions people are actually afraid to ask.</p>
+      </div>
+      <ul class="faq-list">
+        <li class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Isn&rsquo;t anti-retirement just a fancy word for not retiring?</div>
+          <div class="faq-a">
+            <p>Not quite. &ldquo;Anti-retirement&rdquo; isn&rsquo;t about refusing to stop working &mdash; it&rsquo;s about refusing to stop <em>mattering</em>. You can step back from a career, wind down a business, or exit a partnership and still be deeply engaged. The difference is whether that engagement is self-directed or just a comfortable default. This guide is about the former.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">I&rsquo;m already exhausted. I don&rsquo;t want to take on more projects.</div>
+          <div class="faq-a">
+            <p>Good. Neither does this guide. Anti-retirement isn&rsquo;t about adding more to your plate &mdash; it&rsquo;s about removing the things that drain you and creating the space for what actually lights you up. The Discovery Deck helps you figure out the difference before you commit to anything.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">I&rsquo;m not a business owner &mdash; does this apply to me?</div>
+          <div class="faq-a">
+            <p>Absolutely. While Tony and Kevin are ex-owners, Christine and Martin are a GP and a corporate director &mdash; and their stories resonate with anyone who&rsquo;s built their identity around professional achievement and is now confronting what&rsquo;s left when that&rsquo;s no longer the main thing. The design thinking framework works regardless of your background.</p>
+          </div>
+        </li>
+        <li class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What if my family thinks I should just enjoy retirement?</div>
+          <div class="faq-a">
+            <p>Loving families often conflate &ldquo;rest&rdquo; with &ldquo;care&rdquo; because they&rsquo;ve absorbed the same cultural script. This guide doesn&rsquo;t ask you to ignore their concerns &mdash; it gives you a language to explain what you&rsquo;re actually searching for, and a framework that helps them understand why restlessness isn&rsquo;t a disease to be cured. It&rsquo;s a design clue.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="footer-cta" id="final-cta">
+    <div class="container">
+      <h2>You&rsquo;ve Got 20 Years of Sharp.<br>Don&rsquo;t Waste Them on a Sun Lounger.</h2>
+      <p>The Discovery Deck is free. The questions it asks are hard. The answers are worth it.</p>
+      <a href="#get-the-guide" class="btn btn-primary" style="background:#fff;color:var(--col-rust);">Get the Discovery Deck &mdash; Free</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#the-problem">The Problem</a>
+        <a href="#the-solution">The Solution</a>
+        <a href="#get-the-guide">Free Discovery Deck</a>
+        <a href="#author">About Nick</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <p>&copy; 2025 Nick H. / The Anti-Retirement Guide. All rights reserved.</p>
+      <p style="margin-top:8px;">Not financial advice. Always consult a qualified financial adviser before making major decisions.</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(el) {
+      var answer = el.nextElementSibling;
+      var isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.faq-a').forEach(function(a){ a.classList.remove('open'); });
+      document.querySelectorAll('.faq-q').forEach(function(q){ q.classList.remove('open'); });
+      if (!isOpen) { answer.classList.add('open'); el.classList.add('open'); }
+    }
+    function handleSubmit(e) {
+      e.preventDefault();
+      var form = e.target;
+      var btn = form.querySelector('button[type=submit]');
+      var name = form.querySelector('#firstName').value.trim();
+      var email = form.querySelector('#email').value.trim();
+      if (!name || !email) return;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(function() {
+        form.innerHTML = '<p style="color:var(--col-navy);font-weight:700;font-size:1.1rem;margin-bottom:8px;">&#10003; You&rsquo;re in. Check your inbox.</p><p style="color:var(--col-subtext);font-size:0.9rem;">The Discovery Deck is on its way to <strong>' + email + '</strong>. If it doesn&rsquo;t arrive in 5 minutes, check your spam folder.</p>';
+      }, 1200);
+    }
+  </script>
+
+</body>
+</html>

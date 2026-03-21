@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Anti-Retirement Guide — Plan Your Retirement Together</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #1a2744;
+            --navy-light: #2d3f63;
+            --teal: #2a7f7f;
+            --teal-light: #3da3a3;
+            --cream: #f9f6f0;
+            --cream-dark: #f0ebe0;
+            --gold: #c8973a;
+            --gold-light: #e0b45a;
+            --text: #2c2c2c;
+            --text-light: #5a5a5a;
+            --white: #ffffff;
+            --error: #c0392b;
+            --success: #27ae60;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', Georgia, serif;
+            line-height: 1.3;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background: var(--teal);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease;
+            letter-spacing: 0.02em;
+        }
+        .btn:hover { background: var(--teal-light); transform: translateY(-1px); }
+        .btn:active { transform: translateY(0); }
+        .btn-gold {
+            background: var(--gold);
+            color: var(--white);
+        }
+        .btn-gold:hover { background: var(--gold-light); }
+        .btn-full { width: 100%; text-align: center; padding: 18px 36px; font-size: 1.05rem; }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--teal);
+            color: var(--teal);
+        }
+        .btn-outline:hover { background: var(--teal); color: var(--white); }
+
+        /* Navigation */
+        .nav {
+            background: var(--navy);
+            color: var(--white);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold-light); }
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy) !important;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 600 !important;
+        }
+        .nav-cta:hover { background: var(--gold-light) !important; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 60%, #3a5580 100%);
+            color: var(--white);
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(42,127,127,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(200,151,58,0.2);
+            border: 1px solid rgba(200,151,58,0.4);
+            color: var(--gold-light);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        .hero h1 em {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        .hero-sub-strong {
+            color: rgba(255,255,255,0.95);
+            font-weight: 500;
+        }
+        .hero-features {
+            display: flex;
+            gap: 24px;
+            margin: 28px 0 36px;
+            flex-wrap: wrap;
+        }
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+        }
+        .hero-feature-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .hero-feature-icon svg { width: 12px; height: 12px; }
+
+        .hero-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 36px;
+            color: var(--text);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .hero-card-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 6px;
+        }
+        .hero-card h3 {
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .hero-card-sub {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        .form-group { margin-bottom: 14px; }
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #d0d0d0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+        .form-note {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 12px;
+            display: flex;
+            align-items: start;
+            gap: 6px;
+            line-height: 1.5;
+        }
+        .form-note-icon { flex-shrink: 0; margin-top: 1px; }
+
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .hero-card { max-width: 480px; }
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 90px 0;
+            background: var(--white);
+        }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 18px;
+        }
+        .section-intro {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 680px;
+            line-height: 1.75;
+            margin-bottom: 50px;
+        }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .problem-card {
+            background: var(--cream);
+            border-radius: 10px;
+            padding: 32px 28px;
+            border-left: 4px solid var(--error);
+        }
+        .problem-card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(192,57,43,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .problem-card h4 {
+            font-size: 1.05rem;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+        .problem-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.65;
+        }
+
+        @media (max-width: 900px) {
+            .problem-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 90px 0;
+            background: var(--cream);
+        }
+        .solution-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+        .solution-book {
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 40px 36px;
+            text-align: center;
+            box-shadow: 0 16px 48px rgba(26,39,68,0.2);
+        }
+        .book-cover {
+            width: 220px;
+            height: 320px;
+            background: linear-gradient(145deg, var(--navy-light), var(--navy));
+            border-radius: 6px;
+            margin: 0 auto 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            border: 1px solid rgba(200,151,58,0.3);
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+        }
+        .book-cover-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            text-align: center;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        .book-cover-sub {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            letter-spacing: 0.05em;
+        }
+        .book-cover-author {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .book-meta {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+        .book-meta strong { color: var(--gold-light); }
+        .solution-content h2 { font-size: 1.9rem; color: var(--navy); margin-bottom: 16px; }
+        .solution-content > p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 28px;
+            line-height: 1.75;
+        }
+        .solution-list {
+            list-style: none;
+            margin-bottom: 36px;
+        }
+        .solution-list li {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 16px;
+            align-items: start;
+        }
+        .solution-list-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .solution-list-icon svg { width: 14px; height: 14px; }
+        .solution-list li p { font-size: 0.95rem; color: var(--text); line-height: 1.6; }
+        .solution-list li p strong { color: var(--navy); }
+
+        @media (max-width: 900px) {
+            .solution-inner { grid-template-columns: 1fr; }
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 90px 0;
+            background: var(--white);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 50px;
+        }
+        .testimonial-card {
+            background: var(--cream);
+            border-radius: 10px;
+            padding: 32px 28px;
+            position: relative;
+        }
+        .testimonial-quote {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: var(--teal);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.75;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-light);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .testimonial-name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+        .testimonial-detail { font-size: 0.8rem; color: var(--text-light); }
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Author */
+        .author {
+            padding: 90px 0;
+            background: var(--navy);
+            color: var(--white);
+        }
+        .author-inner {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .author-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, var(--navy-light), var(--teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            border: 4px solid rgba(200,151,58,0.4);
+        }
+        .author h2 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .author-title-line {
+            color: var(--gold-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .author p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 14px;
+            max-width: 620px;
+        }
+
+        @media (max-width: 700px) {
+            .author-inner { grid-template-columns: 1fr; }
+            .author-photo { width: 140px; height: 140px; font-size: 2.5rem; }
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 90px 0;
+            background: var(--cream);
+        }
+        .faq-list {
+            max-width: 720px;
+            margin-top: 50px;
+        }
+        .faq-item {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .faq-question {
+            padding: 22px 28px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .faq-question:hover { background: var(--cream); }
+        .faq-answer {
+            padding: 0 28px 22px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.75;
+            display: none;
+        }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-toggle { font-size: 1.2rem; color: var(--teal); transition: transform 0.2s; }
+        .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+        /* CTA Banner */
+        .cta-banner {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .cta-banner h2 {
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 14px;
+        }
+        .cta-banner p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 32px;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.6);
+            padding: 40px 0 30px;
+            font-size: 0.85rem;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-logo {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--gold-light); }
+        .footer-bottom {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+    </style>
+<script>
+  posthog.init('phc_IdAZHvksJADiN0p8Cm7H73jh5NT6oQaoYfUgaPPRB28', { api_host: 'https://app.posthog.com' })
+</script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="container nav-inner">
+        <div class="nav-logo">The Anti-Retirement Guide</div>
+        <ul class="nav-links">
+            <li><a href="#problem">The Problem</a></li>
+            <li><a href="#solution">The Book</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#get-guide" class="nav-cta">Get the Free Guide</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-badge">Launching 7 April 2026</div>
+                <h1>You've been planning your <em>retirement.</em><br>But has your spouse?</h1>
+                <p class="hero-sub">Most couples think they're on the same page about retirement. Until they realise they haven't actually had the conversation.</p>
+                <p class="hero-sub-strong">The Anti-Retirement Guide gives you and your partner a shared roadmap — built together, for the life you actually want.</p>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        UK Pension Freedoms covered
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        NHS &amp; state pension guidance
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        Couples-focused exercises
+                    </div>
+                </div>
+            </div>
+            <div class="hero-card" id="get-guide">
+                <div class="hero-card-label">Free Lead Magnet</div>
+                <h3>The Spouse Conversation Guide</h3>
+                <p class="hero-card-sub">5 questions that uncover what your partner really wants from retirement — before you make any plans.</p>
+                <form id="lead-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="e.g. Sarah" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.co.uk" required>
+                    </div>
+                    <button type="submit" class="btn btn-gold btn-full" id="submit-btn">Send Me the Guide — It's Free</button>
+                    <div class="form-note">
+                        <div class="form-note-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5a5a5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                        No spam. Unsubscribe anytime. Your details stay private.
+                    </div>
+                </form>
+                <div id="form-success" style="display:none; text-align:center; padding: 20px 0;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <p style="font-weight:600; color:var(--navy);">Check your inbox!</p>
+                    <p style="font-size:0.85rem; color:var(--text-light); margin-top:4px;">Your Spouse Conversation Guide is on its way.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Problem -->
+<section class="problem" id="problem">
+    <div class="container">
+        <div class="section-label">The Real Problem</div>
+        <h2 class="section-title">Retirement pulls couples apart — right when they need to come together</h2>
+        <p class="section-intro">You've saved diligently, planned your finances, maybe even booked the first holiday. But beneath the spreadsheets, something's quietly wrong. You and your spouse haven't actually talked about what retirement means — for both of you.</p>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="problem-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <h4>The Assumption Trap</h4>
+                <p>You assume your partner wants what you want. They nod along. But when the day arrives, their version of retirement looks nothing like yours. The dream holiday suddenly feels like a solo trip.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4>The Sandwich Generation Squeeze</h4>
+                <p>You've still got elderly parents depending on you. Your kids haven't quite launched. And now you're meant to plan your own freedom — while carrying everyone else's needs on your shoulders.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h4>Pension Freedoms — A Double-Edged Sword</h4>
+                <p>The 2015 pension freedoms gave you more choice than ever. But choice without alignment creates tension. Who decides how the pension is drawn? What does 'security' even mean for each of you?</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solution -->
+<section class="solution" id="solution">
+    <div class="container">
+        <div class="solution-inner">
+            <div class="solution-book">
+                <div class="book-cover">
+                    <div class="book-cover-title">The Anti-Retirement Guide</div>
+                    <div class="book-cover-sub">A couple's roadmap to the life after work</div>
+                    <div class="book-cover-author">Nick</div>
+                </div>
+                <p class="book-meta"><strong>£14.99</strong> paperback &nbsp;|&nbsp; <strong>£4.99</strong> eBook</p>
+                <p style="margin-top:16px; font-size:0.85rem; color:rgba(255,255,255,0.6);">Available from all good bookshops and online retailers</p>
+            </div>
+            <div class="solution-content">
+                <div class="section-label">The Solution</div>
+                <h2>One book. Both of you. A shared future.</h2>
+                <p>The Anti-Retirement Guide isn't a retirement planning manual. It's a relationship toolkit — one that happens to cover pensions, property, NHS costs, and part-time work. Written for couples who want to build a retirement that works for both of them.</p>
+                <ul class="solution-list">
+                    <li>
+                        <div class="solution-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <p><strong>The Money Conversation</strong> — frameworks for discussing pensions, drawdown, and savings without it turning into an argument</p>
+                    </li>
+                    <li>
+                        <div class="solution-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <p><strong>The Lifestyle Blueprint</strong> — exercises to discover what your partner actually wants, not what you've assumed they want</p>
+                    </li>
+                    <li>
+                        <div class="solution-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <p><strong>UK-Specific Guidance</strong> — state pension ages, NHS costs in retirement, Care Act rights, and Pension Credit explained clearly</p>
+                    </li>
+                    <li>
+                        <div class="solution-list-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <p><strong>The Sandwich Generation Plan</strong> — practical ways to care for ageing parents without derailing your own future</p>
+                    </li>
+                </ul>
+                <a href="#get-guide" class="btn">Get the Free Spouse Conversation Guide</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="section-label" style="text-align:center;">What Readers Are Saying</div>
+        <h2 class="section-title" style="text-align:center;">Real couples. Real conversations.</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">We'd been together 28 years and had never actually sat down and properly talked about what retirement looked like for each of us. This book gave us the questions we should have been asking all along. We've now got a plan we both genuinely feel good about.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">MR</div>
+                    <div>
+                        <div class="testimonial-name">Martin R.</div>
+                        <div class="testimonial-detail">Retired NHS Manager, Bristol. Age 61.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">As a GP, I thought I understood the financial side. But the chapters on NHS continuing healthcare and social care costs were an absolute eye-opener. My wife and I now have a proper plan for my parents too — something we desperately needed.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">PS</div>
+                    <div>
+                        <div class="testimonial-name">Dr Priya S.</div>
+                        <div class="testimonial-detail">GP, Leicester. Age 49.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">I bought this for my husband and I to read together. Three months later, we've restructured his defined benefit pension, booked our first proper holiday in a decade, and — for the first time —
