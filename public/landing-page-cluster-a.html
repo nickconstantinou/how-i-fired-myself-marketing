@@ -683,7 +683,7 @@
                 </div>
             </div>
             <div class="hero-card" id="get-guide">
-                <div class="hero-card-label">Free Lead Magnet</div>
+                <div class="hero-card-label">Free Jumpstart</div>
                 <h3>The Spouse Conversation Guide</h3>
                 <p class="hero-card-sub">5 questions that uncover what your partner really wants from retirement — before you make any plans.</p>
                 <form id="lead-form" onsubmit="handleSubmit(event)">
@@ -703,7 +703,7 @@
                         No spam. Unsubscribe anytime. Your details stay private.
                     </div>
                 </form>
-                <div id="form-success" style="display:none; text-align:center; padding: 20px 0;">
+                <div id="success-message" style="display:none; text-align:center; padding: 20px 0;">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     <p style="font-weight:600; color:var(--navy);">Check your inbox!</p>
                     <p style="font-size:0.85rem; color:var(--text-light); margin-top:4px;">Your Spouse Conversation Guide is on its way.</p>
@@ -828,3 +828,91 @@
                 <div class="testimonial-stars">★★★★★</div>
                 <div class="testimonial-quote">"</div>
                 <p class="testimonial-text">I bought this for my husband and I to read together. Three months later, we've restructured his defined benefit pension, booked our first proper holiday in a decade, and — for the first time —
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Author -->
+<section class="author" id="author">
+    <div class="container">
+        <div class="author-inner">
+            <div class="author-photo">N</div>
+            <div class="author-content">
+                <h2>Nick</h2>
+                <p class="author-age">54 &middot; London &amp; Dorset</p>
+                <p>Nick spent 25 years in corporate project management before taking voluntary redundancy at 50. What followed was 18 months of identity crisis, silence, and one very illuminating conversation with a stranger in a pub. The Anti-Retirement Guide is the book he wished he&rsquo;d had.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+    <div class="container">
+        <p class="section-label" style="text-align:center;">FAQ</p>
+        <h2 class="section-title" style="text-align:center;">Questions couples ask before retirement</h2>
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">We can just talk about this when the time comes, right?</div>
+                <div class="faq-answer">Most couples think they will — and then discover they&rsquo;re living in two completely different futures. The time to have this conversation is while you&rsquo;re both still working and have the bandwidth for an honest, low-stakes discussion. Not when one of you is already retired and feeling the pressure.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">What if we disagree about what retirement looks like?</div>
+                <div class="faq-answer">Disagreement isn&rsquo;t the problem — silence is. The guide doesn&rsquo;t promise you&rsquo;ll always want the same things. It gives you a framework for navigating the differences before they become sources of resentment rather than conversations.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Is this just for people approaching retirement?</div>
+                <div class="faq-answer">The earlier the better. Couples in their 40s and 50s who work through these questions have significantly more time to align their expectations — and significantly less to unlearn when the moment arrives.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+    <div class="container">
+        <h2>Ready to Stop Assuming and Start Asking?</h2>
+        <p>The 30-Day Anti-Retirement Jumpstart is free. It takes 10 minutes to start — and could save you years of quietly growing apart.</p>
+        <a href="#get-guide" class="btn-gold">Get the Free Jumpstart</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-logo">The Anti-Retirement Guide</div>
+            <ul class="footer-links">
+                <li><a href="#the-problem">The Problem</a></li>
+                <li><a href="#the-book">The Book</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nick / The Anti-Retirement Guide. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleFaq(el) {
+        el.classList.toggle('open');
+    }
+    function handleSubmit(e) {
+        e.preventDefault();
+        var form = e.target;
+        var btn = form.querySelector('.btn-submit');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        setTimeout(function() {
+            form.style.display = 'none';
+            var successDiv = document.getElementById('success-message');
+            if (successDiv) successDiv.style.display = 'block';
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>

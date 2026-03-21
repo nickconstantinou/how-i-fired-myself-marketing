@@ -648,6 +648,7 @@
           </div>
           <button type="submit" class="btn btn-primary">Send Me the Discovery Deck &#8594;</button>
         </form>
+        <div id="success-message" style="display:none; text-align:center; padding:16px 0; color:var(--col-success); font-weight:700; font-size:1.05rem;">Check your inbox!</div>
         <p class="form-footnote">
           <strong>&#10003; Free forever.</strong> No card needed. Unsubscribe any time with one click.<br>
           Used by ex-founders, GPs, directors, and one very stubborn management consultant from Leeds.
@@ -792,14 +793,16 @@
       e.preventDefault();
       var form = e.target;
       var btn = form.querySelector('button[type=submit]');
-      var name = form.querySelector('#firstName').value.trim();
+      var name = form.querySelector('#firstName') ? form.querySelector('#firstName').value.trim() : '';
       var email = form.querySelector('#email').value.trim();
-      if (!name || !email) return;
+      if (!email) return;
       btn.textContent = 'Sending...';
       btn.disabled = true;
       setTimeout(function() {
-        form.innerHTML = '<p style="color:var(--col-navy);font-weight:700;font-size:1.1rem;margin-bottom:8px;">&#10003; You&rsquo;re in. Check your inbox.</p><p style="color:var(--col-subtext);font-size:0.9rem;">The Discovery Deck is on its way to <strong>' + email + '</strong>. If it doesn&rsquo;t arrive in 5 minutes, check your spam folder.</p>';
-      }, 1200);
+        form.style.display = 'none';
+        var successDiv = document.getElementById('success-message');
+        if (successDiv) successDiv.style.display = 'block';
+      }, 1000);
     }
   </script>
 
