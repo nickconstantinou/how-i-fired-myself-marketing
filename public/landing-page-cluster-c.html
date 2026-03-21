@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Retirement is the worst planning mistake you could make. Discover a bold alternative for high achievers who refuse to wind down.">
-  <title>The Anti-Retirement Guide | Don't Wind Down. Design Forward.</title>
+  <meta name="description" content="Is this it? The question nobody asks when they plan retirement. A quiet, honest guide for people who've done everything right and still feel lost.">
+  <title>The Anti-Retirement Guide | The Question You're Not Asking</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -587,6 +587,77 @@
       .testi-grid { grid-template-columns: 1fr; }
       .pain-grid  { grid-template-columns: 1fr; }
     }
+
+    /* CARPARK OPENING */
+    .carpark-strip {
+      background: var(--col-cream);
+      border-top: 3px solid var(--col-rust);
+      border-bottom: 3px solid var(--col-rust);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .carpark-strip p {
+      font-family: var(--font-head);
+      font-size: clamp(1.2rem,2.5vw,1.65rem);
+      color: var(--col-navy);
+      font-style: italic;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* WHY AM I DOING THIS */
+    .why-section {
+      background: var(--col-navy);
+      color: var(--col-white);
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .why-section h2 {
+      color: var(--col-white);
+      font-size: clamp(2rem,4vw,3rem);
+      font-family: var(--font-head);
+      font-style: italic;
+    }
+    .why-section h2 em { color: var(--col-rust); font-style: normal; }
+
+    /* MICHAEL CASE STUDY */
+    .case-study {
+      background: var(--col-cream);
+      padding: var(--section-pad);
+    }
+    .case-study-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .case-study-label {
+      display: inline-block;
+      background: rgba(192,57,43,0.12);
+      border: 1px solid rgba(192,57,43,0.4);
+      color: var(--col-rust);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .case-study blockquote {
+      font-family: var(--font-head);
+      font-size: clamp(1.1rem,2vw,1.35rem);
+      color: var(--col-navy);
+      line-height: 1.7;
+      font-style: italic;
+      border-left: 4px solid var(--col-rust);
+      padding-left: 28px;
+      margin: 0 0 24px;
+    }
+    .case-study p {
+      color: var(--col-subtext);
+      font-size: 0.95rem;
+    }
+
   </style>
 <script>
   posthog.init('phc_IdAZHvksJADiN0p8Cm7H73jh5NT6oQaoYfUgaPPRB28', { api_host: 'https://app.posthog.com' })
@@ -630,23 +701,29 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="container">
-      <span class="hero-eyebrow">For High Achievers Aged 50–65</span>
-      <h1>Retirement is the <em>worst planning mistake</em> you could make.</h1>
-      <p class="subhead">If you've spent decades building, deciding, and driving &mdash; sitting on a beach won't fix you. It will break you. There's a bolder, braver path. And it's not what you think.</p>
+      <span class="hero-eyebrow">For People Aged 50–65 Who Built a Life Around Achievement</span>
+      <h1>Is <em>This</em> It?</h1>
+      <p class="subhead">what if I'm wrong?<br>What if the spreadsheet is fine &mdash; and that's not actually the problem?</p>
       <div class="hero-actions">
         <a href="#get-the-guide" class="btn btn-primary">Download the Discovery Deck &mdash; Free</a>
-        <a href="#the-problem" class="btn btn-ghost">See Why Retirement Fails</a>
+        <a href="#the-problem" class="btn btn-ghost">See What's Behind the Question</a>
       </div>
-      <p class="hero-trust">Trusted by 4,200+ UK high achievers &nbsp;&starf;&nbsp;&starf;&nbsp;&starf;&nbsp;&starf;&nbsp;&starf;</p>
+      
     </div>
   </section>
+
+
+  <!-- CARPARK OPENING -->
+  <div class="carpark-strip">
+    <p>"I was sitting in my car in the office car park. Engine running. Air conditioning on. Not going in."</p>
+  </div>
 
   <!-- THE PROBLEM -->
   <section id="the-problem">
     <div class="container">
       <div style="text-align:center; max-width:680px; margin:0 auto;">
-        <h2>You sold up. You stepped back. Now what?</h2>
-        <p class="subhead">The first few months feel like freedom. Then the silence kicks in.</p>
+        <h2>The Question You're Not Asking</h2>
+        <p class="subhead">You did everything right. The career, the plan, the payoff. And still, something isn't right.</p>
       </div>
       <div class="pain-grid">
         <div class="pain-card">
@@ -683,12 +760,30 @@
     </div>
   </section>
 
+
+  <!-- MICHAEL CASE STUDY -->
+  <section class="case-study" id="case-study">
+    <div class="case-study-inner">
+      <span class="case-study-label">A Story You&rsquo;ll Recognise</span>
+      <blockquote>"Michael was 56. VP of Operations, 22 years. One afternoon he stood up from a meeting he was supposed to be running, said he needed air, and walked out. He didn't go back. He drove to a coffee shop and opened a spreadsheet. That was when the real question started."</blockquote>
+      <p>This isn&rsquo;t about burnout. Michael was good at his job. It wasn&rsquo;t that anything was <em>wrong</em> with his career &mdash; it was that he&rsquo;d never stopped to ask what he actually wanted. When he finally did, the answer wasn&rsquo;t another promotion. It was quieter than that. And harder.</p>
+    </div>
+  </section>
+
+
+  <!-- WHY AM I DOING THIS -->
+  <section class="why-section" id="why-question">
+    <div class="container">
+      <h2><em>Why am I doing this?</em></h2>
+    </div>
+  </section>
+
   <!-- THE SOLUTION -->
   <section id="the-solution" style="background: var(--col-mist);">
     <div class="container">
       <div style="text-align:center; max-width:680px; margin:0 auto 0;">
-        <h2>Stop winding down. Start designing forward.</h2>
-        <p class="subhead">Anti-retirement isn't about working until you drop. It's about making the next 20 years the most intentional of your life.</p>
+        <h2>There's a Word for What You're Feeling</h2>
+        <p class="subhead">It's not restlessness. It's not burnout. It's the moment you realise the plan you were following was someone else's idea of a good life.</p>
       </div>
       <div class="solution-inner">
         <div class="solution-text">
@@ -708,16 +803,7 @@
         <div class="solution-visual">
           <div class="big-quote">&ldquo;The goal isn&rsquo;t to stop working.<br>The goal is to finally work on the right things.&rdquo;</div>
           <div class="attrib">&mdash; Nick, The Anti-Retirement Guide</div>
-          <div class="stat-row">
-            <div class="stat">
-              <div class="stat-num">72%</div>
-              <div class="stat-label">of pre-retirees feel unprepared for the identity shift</div>
-            </div>
-            <div class="stat">
-              <div class="stat-num">20yr</div>
-              <div class="stat-label">average &ldquo;healthy&rdquo; post-retirement window for high achievers</div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -727,10 +813,10 @@
   <section class="lead-capture" id="get-the-guide">
     <div class="container">
       <h2>Your Next Chapter Isn&rsquo;t Going to Write Itself</h2>
-      <p class="subhead">Download the free <span class="deck-name">&ldquo;What I Actually Want&rdquo; Discovery Deck</span> &mdash; 12 pages of sharp, practical exercises used by 4,200+ UK readers to redesign their post-career lives.</p>
+      <p class="subhead">Download the free <span class="deck-name">&ldquo;What I Actually Want&rdquo; Discovery Deck</span> &mdash; 12 pages of sharp, practical exercises to help you stop drifting and start designing the next phase of your life.</p>
       <div class="lead-form">
         <h3>Get Instant Access &mdash; It&rsquo;s Free</h3>
-        <p>No fluff. No spam. Just a genuinely useful tool to help you stop drifting and start designing.</p>
+        <p>No fluff. No spam. Just a genuinely useful tool to help you ask the questions that matter.</p>
         <form id="leadForm" onsubmit="handleSubmit(event)">
           <div class="form-row">
             <label for="firstName">First Name</label>
@@ -744,8 +830,7 @@
         </form>
         <div id="success-message" style="display:none; text-align:center; padding:16px 0; color:var(--col-success); font-weight:700; font-size:1.05rem;">Check your inbox!</div>
         <p class="form-footnote">
-          <strong>&#10003; Free forever.</strong> No card needed. Unsubscribe any time with one click.<br>
-          Used by ex-founders, GPs, directors, and one very stubborn management consultant from Leeds.
+          <strong>&#10003; Free forever.</strong> No card needed. Unsubscribe any time with one click.
         </p>
       </div>
     </div>
@@ -807,7 +892,7 @@
         <div class="author-bio">
           <h3>Nick H.</h3>
           <div class="age-line">54 &middot; North Yorkshire, UK</div>
-          <p>Nick spent 25 years building and selling businesses before a mid-50s reckoning forced him to confront the question most high achievers avoid: &ldquo;What actually comes next &mdash; and do I even know what I want?&rdquo;</p>
+          <p>Nick spent 25 years building and selling businesses. He was good at it. And then one afternoon he was sitting in his car in the office car park, engine running, air conditioning on, not going in. That was when the real question started.</p>
           <p style="margin-top:12px;">The Anti-Retirement Guide is the book he wishes had existed when he was sitting in a newly quiet house wondering why the hell he felt so lost after everything he&rsquo;d &ldquo;achieved.&rdquo; Nick writes for people who've done well by conventional measures and are quietly discovering that conventional measures don&rsquo;t actually satisfy.</p>
           <p style="margin-top:12px;">He lives in North Yorkshire, is still working (by choice), and still hasn&rsquo;t taken up golf.</p>
         </div>
@@ -854,8 +939,8 @@
   <!-- FOOTER CTA -->
   <section class="footer-cta" id="final-cta">
     <div class="container">
-      <h2>You&rsquo;ve Got 20 Years of Sharp.<br>Don&rsquo;t Waste Them on a Sun Lounger.</h2>
-      <p>The Discovery Deck is free. The questions it asks are hard. The answers are worth it.</p>
+      <h2>20 Years of Sharp.<br>Time to Decide What It's For.</h2>
+      <p>The Discovery Deck is free. The questions it asks are honest. The answers are worth it.</p>
       <a href="#get-the-guide" class="btn btn-primary" style="background:#fff;color:var(--col-rust);">Get the Discovery Deck &mdash; Free</a>
     </div>
   </section>
