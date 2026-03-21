@@ -4,12 +4,15 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <main>
-      {/* Hero Section - Updated with DON'T RETIRE — ESCAPE */}
+      {/* Hero Section - Updated with car-park opening */}
       <section className="hero text-white py-32">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="font-bold mb-8 tracking-tight">DON'T RETIRE — <span className="gold-text">ESCAPE</span></h1>
           <p className="text-xl md:text-2xl mb-10 text-slate-200 max-w-2xl mx-auto leading-relaxed">
-            The Anti-Retirement Guide for pre-retirees who aren't ready to stop—they're ready to escape and build something extraordinary.
+            I was sitting in my car in the office car park. Engine running. Not going in.
+          </p>
+          <p className="text-lg md:text-xl mb-12 text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            The Anti-Retirement Guide for people who've done the numbers—they're ready to escape and build something extraordinary.
           </p>
           <Link href="/jumpstart" className="btn-primary text-lg">
             Get the Free 30-Day Jumpstart Guide →
@@ -17,14 +20,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Who's It For - Comprehensive audience section */}
+      {/* Who's It For */}
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="font-bold text-center mb-4">Who Is This Book For?</h2>
           <p className="text-xl text-slate-600 text-center mb-12 max-w-2xl mx-auto">
             If any of these resonate, this book was written for you.
           </p>
-          
           <div className="grid gap-4 md:grid-cols-2 w-full">
             {[
               "You're 50+ and thinking about retirement in the next 5-10 years",
@@ -65,6 +67,28 @@ export default function Home() {
             <li className="flex items-start gap-3"><span className="text-amber-500 text-xl">✓</span> <span className="text-slate-700">You don't know who you are without your job title</span></li>
             <li className="flex items-start gap-3"><span className="text-amber-500 text-xl">✓</span> <span className="text-slate-700">Social connections feel intimidating</span></li>
           </ul>
+          <p className="text-lg mt-8 font-semibold text-amber-600 italic">The question underneath all of it: what if I'm wrong?</p>
+        </div>
+      </section>
+
+      {/* The One More Year Trap */}
+      <section className="py-24">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="bg-amber-50 border-l-4 border-amber-500 p-8 rounded-r-xl">
+            <h2 className="font-bold mb-4 text-amber-900">The One More Year Trap</h2>
+            <p className="text-lg text-amber-800 leading-relaxed">
+              You have enough. You know you have enough. But you keep moving the date. One more year. Then another. The trap has nothing to do with the numbers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Pull-quote: Are you leaving or going toward */}
+      <section className="py-16 section-alt">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <p className="text-2xl md:text-3xl font-bold text-slate-800 italic leading-relaxed">
+            "Are you leaving something, or going toward something?"
+          </p>
         </div>
       </section>
 
@@ -81,6 +105,22 @@ export default function Home() {
             <li className="flex items-start gap-3"><span className="text-amber-500 text-xl">✓</span> <span className="text-slate-700">Stress-testing your plan against worst-case scenarios</span></li>
             <li className="flex items-start gap-3"><span className="text-amber-500 text-xl">✓</span> <span className="text-slate-700">Designing Year One with intention</span></li>
           </ul>
+          <div className="mt-12 border-t border-slate-200 pt-8">
+            <blockquote className="text-center">
+              <p className="text-2xl md:text-3xl font-bold text-amber-600 italic leading-relaxed">
+                "The spreadsheet didn't solve it."
+              </p>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* Pull-quote: I'm not ending. I'm beginning. */}
+      <section className="py-16 bg-slate-900 text-white">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <p className="text-2xl md:text-3xl font-bold text-amber-400 italic leading-relaxed">
+            "I'm not ending. I'm beginning."
+          </p>
         </div>
       </section>
 
@@ -88,7 +128,6 @@ export default function Home() {
       <section className="py-24 section-alt">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="font-bold text-center mb-12">What's Inside the Book</h2>
-          
           <div className="grid gap-6 md:grid-cols-2 mb-12 w-full">
             <div className="card w-full max-w-md">
               <h3 className="font-semibold mb-3 text-slate-800">Part 1: The Decision</h3>
@@ -98,7 +137,6 @@ export default function Home() {
                 <li>• Having the conversation with your spouse</li>
               </ul>
             </div>
-            
             <div className="card w-full max-w-md">
               <h3 className="font-semibold mb-3 text-slate-800">Part 2: The Preparation</h3>
               <ul className="space-y-2 text-slate-600">
@@ -107,7 +145,6 @@ export default function Home() {
                 <li>• Building social connections</li>
               </ul>
             </div>
-            
             <div className="card w-full max-w-md">
               <h3 className="font-semibold mb-3 text-slate-800">Part 3: The Numbers</h3>
               <ul className="space-y-2 text-slate-600">
@@ -116,7 +153,6 @@ export default function Home() {
                 <li>• Stress-testing your plan</li>
               </ul>
             </div>
-            
             <div className="card w-full max-w-md">
               <h3 className="font-semibold mb-3 text-slate-800">Part 4: The Transition</h3>
               <ul className="space-y-2 text-slate-600">
@@ -126,8 +162,6 @@ export default function Home() {
               </ul>
             </div>
           </div>
-
-          {/* Book Specs */}
           <div className="bg-slate-900 rounded-2xl p-8 text-white">
             <h3 className="font-semibold text-center mb-8 text-amber-400">Book Specifications</h3>
             <div className="grid md:grid-cols-3 gap-8 text-center justify-items-center">
@@ -141,14 +175,14 @@ export default function Home() {
               </div>
               <div>
                 <div className="text-4xl font-bold text-amber-400 mb-2">8</div>
-                <div className="text-slate-300">real case studies from pre-retirees</div>
+                <div className="text-slate-300">real case studies from people in their 50s and 60s</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials - Updated with Dave-52, Anonymous-divorced, Mike-57 */}
+      {/* Testimonials */}
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="font-bold text-center mb-12">What Readers Say</h2>
@@ -169,25 +203,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ - Physical Workers, Singles, Renters */}
+      {/* FAQ */}
       <section className="py-24 section-alt">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="font-bold text-center mb-12">Frequently Asked Questions</h2>
-          
           <div className="space-y-6">
             <div className="card w-full max-w-2xl">
               <h3 className="font-semibold mb-3 text-slate-800">I'm a physical worker—can this book help me?</h3>
-              <p className="text-slate-600">Absolutely. If your body is starting to feel decades of manual labor, you need a plan that accounts for physical limitations. We cover stress-testing your financial plan against reduced earning capacity, exploring less physical income streams, and designing a retirement that works with your body, not against it.</p>
+              <p className="text-slate-600">If your body is starting to feel decades of manual labor, you need a plan that accounts for physical limitations. We cover stress-testing your financial plan against reduced earning capacity, exploring less physical income streams, and designing a retirement that works with your body, not against it.</p>
             </div>
-            
             <div className="card w-full max-w-2xl">
               <h3 className="font-semibold mb-3 text-slate-800">I'm single—do I need a different approach?</h3>
-              <p className="text-slate-600">Yes—and that's a good thing. Most retirement advice assumes a spouse or partner. This book addresses the unique challenges of singles: no second income to fall back on, different social dynamics, planning for one person instead of two, and building a support network that replaces what a partner might typically provide.</p>
+              <p className="text-slate-600">Most retirement advice assumes a spouse or partner. This book addresses the unique challenges of singles: no second income to fall back on, different social dynamics, planning for one person instead of two, and building a support network that replaces what a partner might typically provide.</p>
             </div>
-            
             <div className="card w-full max-w-2xl">
               <h3 className="font-semibold mb-3 text-slate-800">I rent—can I still retire comfortably?</h3>
-              <p className="text-slate-600">You absolutely can. This book doesn't assume you own property. We explore renting in retirement (which can actually be more flexible), building a larger nest egg since you're not tying up capital in real estate, geographic flexibility, and the emotional considerations of not having "owned" your home. Your path is different—but it's not lesser.</p>
+              <p className="text-slate-600">This book doesn't assume you own property. We explore renting in retirement (which can actually be more flexible), building a larger nest egg since you're not tying up capital in real estate, geographic flexibility, and the emotional considerations of not having "owned" your home. Your path is different—but it's not lesser.</p>
             </div>
           </div>
         </div>
@@ -211,10 +242,13 @@ export default function Home() {
         <div className="max-w-2xl mx-auto px-6 text-center">
           <h2 className="font-bold mb-6">About the Author</h2>
           <p className="text-lg text-slate-700">
-            I'm Nick. I'm 54. I'm not retired yet—I'm planning.
+            I was sitting in my car in the office car park. Engine running. Not going in.
           </p>
           <p className="text-lg mt-4 text-slate-700">
-            I've spent months researching, interviewing, and writing this book. I've talked to hundreds of pre-retirees. I've faced my own fears about leaving work.
+            That was the morning I started building a spreadsheet — and the morning I realised the spreadsheet wasn't the answer.
+          </p>
+          <p className="text-lg mt-4 text-slate-700">
+            I've spent months researching, interviewing, and writing this book. I've talked to hundreds of people in their 50s and 60s. I've faced my own fears about leaving work.
           </p>
           <p className="text-lg mt-4 text-slate-700">
             This book is my journey—and your guide.
