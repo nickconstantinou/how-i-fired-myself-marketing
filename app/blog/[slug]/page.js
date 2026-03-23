@@ -42,11 +42,6 @@ export async function generateStaticParams() {
   return posts.map((post) => post)
 }
 
-export const metadata = {
-  title: 'Blog — The Anti-Retirement Guide',
-  description: 'Retirement planning insights.',
-}
-
 const posts = {
   'simulate-retirement': {
     title: "Simulate Your Retirement Before You Take the Plunge: The 6-Week Test That Changed Everything",
