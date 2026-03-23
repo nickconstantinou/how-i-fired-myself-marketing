@@ -1915,8 +1915,6 @@ const posts = {
   },
 }
 
-import Link from 'next/link'
-
 export default function BlogPost({ params }) {
   const post = posts[params.slug] || { title: 'Post Not Found', content: '' }
   
