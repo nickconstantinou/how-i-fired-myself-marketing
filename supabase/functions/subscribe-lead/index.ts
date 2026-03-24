@@ -8,7 +8,34 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, apikey',
 }
 
-const PDF_URL = 'https://nickconstantinou.github.io/the-anti-retirement-guide-marketing/jumpstart-guide.pdf'
+const BASE_URL = 'https://nickconstantinou.github.io/the-anti-retirement-guide-marketing'
+
+const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; title: string; desc: string }> = {
+  'cluster-a': {
+    pdf: `${BASE_URL}/spouse-conversation-guide.pdf`,
+    subject: (n) => `Your Spouse Conversation Guide is here, ${n}`,
+    title: 'The Spouse Conversation Guide',
+    desc: 'Five questions that change the shape of the conversation — away from the spreadsheet and toward what actually needs to be said.',
+  },
+  'cluster-b': {
+    pdf: `${BASE_URL}/loneliness-after-work.pdf`,
+    subject: (n) => `Your guide to the social side of leaving is here, ${n}`,
+    title: 'Loneliness After Work',
+    desc: 'An honest look at what happens to your social life when work ends — and three things that consistently help.',
+  },
+  'cluster-c': {
+    pdf: `${BASE_URL}/what-i-actually-want.pdf`,
+    subject: (n) => `Your Discovery Deck is here, ${n}`,
+    title: 'What I Actually Want',
+    desc: 'Twelve questions designed to cut through the noise and get to something real about what you want from your next chapter.',
+  },
+  default: {
+    pdf: `${BASE_URL}/jumpstart-guide.pdf`,
+    subject: (n) => `Your First Week Guide is here, ${n}`,
+    title: 'The First Week Guide',
+    desc: 'A practical framework for structuring your first week out of work so you don\'t just drift — you start building the life you actually want.',
+  },
+}
 
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
@@ -19,9 +46,9 @@ Deno.serve(async (req: Request) => {
     return new Response('Method not allowed', { status: 405, headers: CORS })
   }
 
-  let name: string, email: string
+  let name: string, email: string, source: string
   try {
-    ;({ name, email } = await req.json())
+    ;({ name, email, source = 'default' } = await req.json())
     if (!name || !email) throw new Error('Missing fields')
   } catch {
     return new Response(JSON.stringify({ error: 'Invalid request body' }), {
@@ -29,6 +56,8 @@ Deno.serve(async (req: Request) => {
       headers: { ...CORS, 'Content-Type': 'application/json' },
     })
   }
+
+  const guide = GUIDES[source] ?? GUIDES.default
 
   const resendKey = Deno.env.get('RESEND_API_KEY') ?? ''
   const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? ''
@@ -47,12 +76,12 @@ Deno.serve(async (req: Request) => {
       body: JSON.stringify({
         from: `Nick Constantinou <${fromEmail}>`,
         to: [email],
-        subject: `Your First Week Guide is here, ${firstName}`,
+        subject: guide.subject(firstName),
         html: `
           <p>Hi ${firstName},</p>
-          <p>Thanks for signing up — your copy of <strong>The First Week Guide</strong> is ready.</p>
-          <p><a href="${PDF_URL}" style="background:#1a1a1a;color:#fff;padding:12px 24px;text-decoration:none;border-radius:4px;display:inline-block;font-weight:bold;">Download your guide →</a></p>
-          <p>Inside you'll find a practical framework for structuring your first week out of work so you don't just drift — you start building the life you actually want.</p>
+          <p>Thanks for signing up — your copy of <strong>${guide.title}</strong> is ready.</p>
+          <p><a href="${guide.pdf}" style="background:#1a1a1a;color:#fff;padding:12px 24px;text-decoration:none;border-radius:4px;display:inline-block;font-weight:bold;">Download your guide →</a></p>
+          <p>${guide.desc}</p>
           <p>Reply to this email any time if you have questions.</p>
           <p>Nick</p>
           <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
@@ -70,7 +99,7 @@ Deno.serve(async (req: Request) => {
         'Authorization': `Bearer ${supabaseServiceKey}`,
         'Prefer': 'return=minimal',
       },
-      body: JSON.stringify({ name, email, source: 'the-anti-retirement-guide' }),
+      body: JSON.stringify({ name, email, source }),
     }),
   ])
 
