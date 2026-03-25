@@ -8,7 +8,7 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, apikey',
 }
 
-const BASE_URL = 'https://nickconstantinou.github.io/the-anti-retirement-guide-marketing'
+const BASE_URL = 'https://theantiretirementguide.co.uk'
 
 const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; title: string; desc: string }> = {
   'cluster-a': {
@@ -85,7 +85,7 @@ Deno.serve(async (req: Request) => {
           <p>Reply to this email any time if you have questions.</p>
           <p>Nick</p>
           <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
-          <p style="font-size:12px;color:#999">You're receiving this because you signed up at theantiretirementguide.co.uk. <a href="#">Unsubscribe</a>.</p>
+          <p style="font-size:12px;color:#999">You're receiving this because you signed up at theantiretirementguide.co.uk. <a href="${BASE_URL}/unsubscribe?email=${encodeURIComponent(email)}">Unsubscribe</a>.</p>
         `,
       }),
     }),
