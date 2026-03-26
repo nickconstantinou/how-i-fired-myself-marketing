@@ -90,16 +90,24 @@ Deno.serve(async (req: Request) => {
       }),
     }),
 
-    // 2. Save to Supabase (subscriber record)
+    // 2. Save to Supabase — upsert so re-subscribes reactivate the record
     fetch(`${supabaseUrl}/rest/v1/marketing_leads`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'apikey': supabaseServiceKey,
         'Authorization': `Bearer ${supabaseServiceKey}`,
-        'Prefer': 'return=minimal',
+        'Prefer': 'return=minimal,resolution=merge-duplicates',
       },
-      body: JSON.stringify({ name, email, source }),
+      body: JSON.stringify({
+        email,
+        name,
+        project_id: 'anti-retirement-guide',
+        source,
+        status: 'active',
+        subscribed_at: new Date().toISOString(),
+        unsubscribed_at: null,
+      }),
     }),
   ])
 
