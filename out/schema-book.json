@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "The Anti-Retirement Guide",
+  "author": {
+    "@type": "Person",
+    "name": "Nick Constantinou"
+  },
+  "description": "For people who've done the numbers but still feel terrified. A guide to designing your next chapter when the spreadsheet says you're ready but something isn't right.",
+  "about": {
+    "@type": "Thing",
+    "name": "Retirement planning"
+  },
+  "genre": "Self-help for pre-retirees",
+  "offers": {
+    "@type": "Offer",
+    "price": "19.99",
+    "priceCurrency": "GBP"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "How I Escaped"
+  }
+}

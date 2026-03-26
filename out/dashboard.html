@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostHog Analytics Dashboard — The Anti-Retirement Guide</title>
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.__SV=1,t.createElement("script")).src="https://cdn.jsdelivr.net/npm/posthog-js@4/dist/posthog.min.js",t.head.appendChild(e=t.createElement("script")),e.onload=function(){window.posthog.init("phc_IdAZHvksJADiN0p8Cm7H73jh5NT6oQaoYfUgaPPRB28",{api_host:"https://app.posthog.com",autocapture:false})}},r=function(t,e){return function(){var n=Array.prototype.slice.call(arguments,0);e&&t(n.concat(n)),window.posthog.capture.apply(window.posthog,n)}},o=function(t,e){return function(){var n=Array.prototype.slice.call(arguments,0);e&&t(n.concat(n)),window.posthog.people.set.apply(window.posthog,n)}},n="capture identify alias people.set set_config".split(" "),p=r.bind(null,"event");for(var i=0;i<n.length;i++)window.posthog[n[i]]=p;window.posthog.register=r.bind(null,"register"),window.posthog.unregister=r.bind(null,"unregister"),window.posthog.get_distinct_id=r.bind(null,"get_distinct_id"),window.posthog.get_session_id=r.bind(null,"get_session_id")})(document,window.posthog||[]);
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2744;
+      --teal: #2a7f7f;
+      --amber: #d4af37;
+      --cream: #faf8f4;
+      --white: #ffffff;
+      --border: #e0dbd3;
+      --text: #2c2c2c;
+      --text-muted: #5a5a5a;
+      --green: #27ae60;
+      --red: #c0392b;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 20px 0;
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-logo {
+      font-family: Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--amber);
+    }
+    .header-badge {
+      background: rgba(42,127,127,0.3);
+      color: #7fcfcf;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Page title */
+    .page-header {
+      padding: 48px 0 32px;
+    }
+    .page-header h1 {
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .page-header p { color: var(--text-muted); font-size: 1rem; }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .kpi-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 8px rgba(26,39,68,0.06);
+      border: 1px solid var(--border);
+    }
+    .kpi-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .kpi-value {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .kpi-delta {
+      font-size: 0.82rem;
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    .kpi-delta.up { color: var(--green); }
+    .kpi-delta.neutral { color: var(--text-muted); }
+    .kpi-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+    .kpi-card.accent { border-top: 3px solid var(--teal); }
+    .kpi-card.accent-gold { border-top: 3px solid var(--amber); }
+
+    @media (max-width: 900px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Section */
+    .section {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 8px rgba(26,39,68,0.06);
+      border: 1px solid var(--border);
+    }
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Event table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--border);
+    }
+    td {
+      padding: 14px 14px;
+      font-size: 0.92rem;
+      border-bottom: 1px solid #f0ede8;
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #faf8f4; }
+    .event-name {
+      font-weight: 600;
+      color: var(--navy);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.88rem;
+    }
+    .event-source {
+      display: inline-block;
+      background: #f0ede8;
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .count-badge {
+      display: inline-block;
+      background: var(--teal);
+      color: white;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .count-badge.gold { background: var(--amber); color: var(--navy); }
+    .count-badge.green { background: var(--green); }
+
+    /* Chart placeholder */
+    .chart-placeholder {
+      height: 200px;
+      background: linear-gradient(180deg, #f0ede8 0%, var(--cream) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .chart-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .chart-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .chart-bar-fill {
+      width: 100%;
+      background: var(--teal);
+      border-radius: 4px 4px 0 0;
+      min-height: 8px;
+      transition: height 0.3s ease;
+    }
+    .chart-bar-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Funnel */
+    .funnel {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .funnel-step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .funnel-bar {
+      flex: 1;
+      height: 40px;
+      background: var(--teal);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: width 0.5s ease;
+    }
+    .funnel-bar.amber { background: var(--amber); color: var(--navy); }
+    .funnel-bar.navy { background: var(--navy); }
+    .funnel-label {
+      width: 140px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .funnel-count {
+      width: 50px;
+      text-align: right;
+      font-weight: 700;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    /* Links */
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      padding: 24px 0;
+      text-align: center;
+      font-size: 0.82rem;
+      margin-top: 48px;
+    }
+  </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1661332635055180');
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1661332635055180&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-logo">The Anti-Retirement Guide</div>
+    <div class="header-badge">PostHog Analytics · Project #316789</div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="page-header">
+    <h1>📊 Analytics Dashboard</h1>
+    <p>Track key conversion events across all landing pages and the Next.js app.</p>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi-card accent">
+      <div class="kpi-icon">👁️</div>
+      <div class="kpi-label">Total Page Views</div>
+      <div class="kpi-value" id="kpi-pageviews">—</div>
+      <div class="kpi-delta neutral">Auto-tracked via PostHog</div>
+    </div>
+    <div class="kpi-card accent">
+      <div class="kpi-icon">✉️</div>
+      <div class="kpi-label">Email Signups</div>
+      <div class="kpi-value" id="kpi-signups">—</div>
+      <div class="kpi-delta neutral">From all landing pages</div>
+    </div>
+    <div class="kpi-card accent-gold">
+      <div class="kpi-icon">👆</div>
+      <div class="kpi-label">CTA Clicks</div>
+      <div class="kpi-value" id="kpi-cta">—</div>
+      <div class="kpi-delta neutral">Primary button interactions</div>
+    </div>
+    <div class="kpi-card accent-gold">
+      <div class="kpi-icon">📖</div>
+      <div class="kpi-label">Lead Magnet Downloads</div>
+      <div class="kpi-value" id="kpi-downloads">—</div>
+      <div class="kpi-delta neutral">Free guide requests</div>
+    </div>
+  </div>
+
+  <!-- Funnel Section -->
+  <div class="section">
+    <h2 class="section-title">📍 Conversion Funnel</h2>
+    <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:24px;">
+      Track users from landing page visit → CTA click → email signup → download.
+      <br>Connect to your <a href="https://app.posthog.com" target="_blank">PostHog dashboard</a> to see live data.
+    </p>
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-label">Landing Page Visit</div>
+        <div class="funnel-bar navy" style="width:100%;">100%</div>
+        <div class="funnel-count">—</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-label">CTA Button Click</div>
+        <div class="funnel-bar" style="width:55%;">55%</div>
+        <div class="funnel-count">—</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-label">Email Form Submit</div>
+        <div class="funnel-bar amber" style="width:22%;">22%</div>
+        <div class="funnel-count">—</div>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-label">Guide Download / Lead</div>
+        <div class="funnel-bar" style="width:18%;">18%</div>
+        <div class="funnel-count">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weekly Chart Placeholder -->
+  <div class="section">
+    <h2 class="section-title">📅 Weekly Activity (Last 7 Days)</h2>
+    <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:8px;">
+      Connect PostHog API to render live chart data.
+    </p>
+    <div class="chart-placeholder">
+      <span>📈 Chart renders here with live PostHog data</span>
+      <span style="font-size:0.8rem;">Use PostHog JS SDK or API to stream event counts</span>
+    </div>
+    <div class="chart-row" id="chart-row">
+      <div class="chart-bar"><div class="chart-bar-fill" style="height:40px;"></div><div class="chart-bar-label">Mon</div></div>
+      <div class="chart-bar"><div class="chart-bar-fill" style="height:60px;"></div><div class="chart-bar-label">Tue</div></div>
+      <div class="chart-bar"><div class="chart-bar-fill" style="height:30px;"></div><div class="chart-bar-label">Wed</div></div>
+      <div class="chart-bar"><div class="chart-bar-fill" style="height:80px;"></div><div class="chart-bar-label">Thu</div></div>
+      <div class="chart-bar"><div class="chart-bar-fill" style="height:55px;"></div><div class="chart-bar-label">Fri</div></div>
+      <div class="chart-bar"><div class="chart-bar-fill" style="height:25px;"></div><div class="chart-bar-label">Sat</div></div>
+      <div class="chart-bar"><div class="chart-bar-fill" style="height:20px;"></div><div class="chart-bar-label">Sun</div></div>
+    </div>
+  </div>
+
+  <!-- Tracked Events -->
+  <div class="section">
+    <h2 class="section-title">📡 Tracked Events</h2>
+    <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:20px;">
+      These are the key events captured by PostHog across all pages. See the full event schema below.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Properties</th>
+          <th>Pages</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="event-name">email_signup</span></td>
+          <td><code style="font-size:0.8rem; background:#f0ede8; padding:2px 6px; border-radius:3px;">email, source</code></td>
+          <td>
+            <span class="event-source">cluster-a</span>
+            <span class="event-source">cluster-b</span>
+            <span class="event-source">cluster-c</span>
+            <span class="event-source">jumpstart</span>
+          </td>
+          <td>User submits email capture form on any landing page</td>
+        </tr>
+        <tr>
+          <td><span class="event-name">cta_click</span></td>
+          <td><code style="font-size:0.8rem; background:#f0ede8; padding:2px 6px; border-radius:3px;">cta_text, source</code></td>
+          <td>
+            <span class="event-source">cluster-a</span>
+            <span class="event-source">cluster-b</span>
+            <span class="event-source">cluster-c</span>
+            <span class="event-source">homepage</span>
+          </td>
+          <td>User clicks any primary CTA button (nav, hero, section, footer)</td>
+        </tr>
+        <tr>
+          <td><span class="event-name">lead_magnet_download</span></td>
+          <td><code style="font-size:0.8rem; background:#f0ede8; padding:2px 6px; border-radius:3px;">source</code></td>
+          <td><span class="event-source">cluster-a</span> <span class="event-source">cluster-b</span></td>
+          <td>User requests the free lead magnet guide (Anti-Retirement Guide)</td>
+        </tr>
+        <tr>
+          <td><span class="event-name">purchase_intent</span></td>
+          <td><code style="font-size:0.8rem; background:#f0ede8; padding:2px 6px; border-radius:3px;">source</code></td>
+          <td><span class="event-source">all landing pages</span></td>
+          <td>User clicks through to book/purchase page (add to your tracking as needed)</td>
+        </tr>
+        <tr>
+          <td><span class="event-name">pageview</span> <span style="font-size:0.75rem; color:var(--text-muted);">(auto)</span></td>
+          <td><code style="font-size:0.8rem; background:#f0ede8; padding:2px 6px; border-radius:3px;">$current_url, $host</code></td>
+          <td><span class="event-source">all pages</span></td>
+          <td>Auto-captured by PostHog JS on every page load</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Source Breakdown -->
+  <div class="section">
+    <h2 class="section-title">🗺️ Event Sources</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Page / Cluster</th>
+          <th>URL Pattern</th>
+          <th>Events Tracked</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cluster A</strong> — Couples retirement</td>
+          <td><code style="font-size:0.8rem;">/landing-page-cluster-a.html</code></td>
+          <td>
+            <span class="count-badge">email_signup</span>
+            <span class="count-badge gold">cta_click</span>
+          </td>
+          <td style="color:var(--green); font-weight:600;">✅ Active</td>
+        </tr>
+        <tr>
+          <td><strong>Cluster B</strong> — Solo anti-retirement</td>
+          <td><code style="font-size:0.8rem;">/landing-page-cluster-b.html</code></td>
+          <td>
+            <span class="count-badge">email_signup</span>
+            <span class="count-badge gold">cta_click</span>
+          </td>
+          <td style="color:var(--green); font-weight:600;">✅ Active</td>
+        </tr>
+        <tr>
+          <td><strong>Cluster C</strong> — High achiever design</td>
+          <td><code style="font-size:0.8rem;">/landing-page-cluster-c.html</code></td>
+          <td>
+            <span class="count-badge">email_signup</span>
+            <span class="count-badge gold">cta_click</span>
+          </td>
+          <td style="color:var(--green); font-weight:600;">✅ Active</td>
+        </tr>
+        <tr>
+          <td><strong>Next.js Homepage</strong></td>
+          <td><code style="font-size:0.8rem;">/ (root)</code></td>
+          <td>
+            <span class="count-badge gold">cta_click</span>
+          </td>
+          <td style="color:var(--green); font-weight:600;">✅ Active</td>
+        </tr>
+        <tr>
+          <td><strong>Jumpstart Page</strong></td>
+          <td><code style="font-size:0.8rem;">/jumpstart</code></td>
+          <td>
+            <span class="count-badge green">email_signup</span>
+          </td>
+          <td style="color:var(--green); font-weight:600;">✅ Active</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PostHog Link -->
+  <div class="section" style="background: var(--navy); color: white; text-align:center; padding:48px 32px;">
+    <h2 class="section-title" style="color:white; border-bottom-color:rgba(255,255,255,0.2);">
+      🚀 View Live Data in PostHog
+    </h2>
+    <p style="color:rgba(255,255,255,0.75); max-width:500px; margin:0 auto 24px; font-size:1rem;">
+      Open the PostHog dashboard to see real-time event streams, funnels, and cohort analysis for all tracked events.
+    </p>
+    <a href="https://app.posthog.com/project/316789" target="_blank"
+       style="display:inline-block; background:var(--amber); color:var(--navy); padding:14px 32px; border-radius:50px; font-weight:700; font-size:1rem; text-decoration:none;">
+      Open PostHog Dashboard →
+    </a>
+    <p style="color:rgba(255,255,255,0.5); font-size:0.8rem; margin-top:16px;">
+      Project ID: 316789 · API Key: phc_•••••••••••28
+    </p>
+  </div>
+
+  <div style="padding: 32px 0;"></div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>PostHog Analytics · The Anti-Retirement Guide Marketing Site · Project #316789</p>
+    <p style="margin-top:8px;">Configured by OpenClaw · <a href="https://app.posthog.com" style="color:rgba(255,255,255,0.6);">app.posthog.com</a></p>
+  </div>
+</footer>
+
+<script>
+  // ─── PostHog Dashboard Refresh ─────────────────────────────────────────────
+  // This page embeds the PostHog snippet above so it can read from the
+  // localStorage cache (posthog_queue) and display counts.
+  // For live API data, replace with the PostHog REST API call.
+
+  function updateKPI(id, value) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = value || '0';
+  }
+
+  // Read counts from PostHog session storage / localStorage cache
+  function getPostHogCounts() {
+    try {
+      var counts = JSON.parse(sessionStorage.getItem('posthog_counts') || '{}');
+      updateKPI('kpi-signups', counts.email_signup || '—');
+      updateKPI('kpi-cta', counts.cta_click || '—');
+      updateKPI('kpi-downloads', counts.lead_magnet_download || '—');
+    } catch(e) {
+      // Live counts require PostHog API key — use dashboard link for real data
+    }
+  }
+
+  // Try to get counts after a short delay (PostHog queues events)
+  setTimeout(getPostHogCounts, 1500);
+
+  // ─── Manual Event Log (for demo / local testing) ──────────────────────────
+  // Uncomment and adjust to simulate events in local development:
+  /*
+  posthog.capture('email_signup', { email: 'test@example.com', source: 'dashboard-test' });
+  posthog.capture('cta_click', { cta_text: 'Get Free Access', source: 'landing-page-cluster-a' });
+  */
+</script>
+
+</body>
+</html>

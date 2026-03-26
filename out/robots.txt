@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nickconstantinou.github.io/the-anti-retirement-guide-marketing/sitemap.xml

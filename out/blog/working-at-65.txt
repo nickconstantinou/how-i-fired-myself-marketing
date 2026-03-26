@@ -1,0 +1,258 @@
+1:"$Sreact.fragment"
+9:I[7150,[],""]
+:HL["/_next/static/css/015fc1c1f9fe1a76.css","style"]
+2:T5a5,
+          body { font-family: 'Source Sans 3', system-ui, sans-serif; }
+          h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+          .btn-primary { background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); color: #0f172a; padding: 1rem 2.5rem; border-radius: 9999px; font-weight: 600; display: inline-block; transition: all 0.3s; letter-spacing: 0.5px; }
+          .btn-primary:hover { background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%); transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.4); }
+          .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%); }
+          .section-alt { background: #fafbfc; }
+          .card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); border: 1px solid #e5e7eb; }
+          h1 { font-size: 3.5rem; line-height: 1.15; letter-spacing: -0.02em; }
+          h2 { font-size: 2.5rem; letter-spacing: -0.01em; }
+          h3 { font-size: 1.5rem; }
+          .gold-text { color: #d4af37; text-shadow: 0 0 1px rgba(0,0,0,0.3); }
+          .gold-text-alt { color: #b8962e; }
+          .nav-link { position: relative; }
+          .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #d4af37; transition: width 0.3s; }
+          .nav-link:hover::after { width: 100%; }
+        0:{"P":null,"b":"Zzkuufjcl7yozuO_-CBa3","p":"","c":["","blog","working-at-65"],"i":false,"f":[[["",{"children":["blog",{"children":[["slug","working-at-65","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/015fc1c1f9fe1a76.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en-GB","children":[["$","head",null,{"children":[["$","meta",null,{"name":"geo.region","content":"GB"}],["$","meta",null,{"name":"geo.placename","content":"United Kingdom"}],["$","meta",null,{"name":"ICBM","content":"51.5074, -0.1278"}],["$","meta",null,{"name":"robots","content":"index, follow"}],["$","link",null,{"rel":"canonical","href":"https://nickconstantinou.github.io/the-anti-retirement-guide-marketing/"}],["$","link",null,{"rel":"alternate","hrefLang":"en-GB","href":"https://nickconstantinou.github.io/the-anti-retirement-guide-marketing/"}],["$","link",null,{"rel":"alternate","hrefLang":"x-default","href":"https://nickconstantinou.github.io/the-anti-retirement-guide-marketing/"}],["$","meta",null,{"property":"og:title","content":"The Anti-Retirement Guide | Design Your Next Chapter"}],["$","meta",null,{"property":"og:description","content":"For people who are close to retirement but haven't been able to move. Not because the money isn't there. Because the thing on the other side doesn't have a shape yet."}],["$","meta",null,{"property":"og:type","content":"website"}],["$","meta",null,{"property":"og:url","content":"https://nickconstantinou.github.io/the-anti-retirement-guide-marketing/"}],["$","meta",null,{"property":"og:locale","content":"en_GB"}],["$","meta",null,{"property":"og:site_name","content":"The Anti-Retirement Guide"}],["$","meta",null,{"name":"twitter:card","content":"summary_large_image"}],["$","meta",null,{"name":"twitter:title","content":"The Anti-Retirement Guide | Design Your Next Chapter"}],["$","meta",null,{"name":"twitter:description","content":"For people who are close to retirement but haven't been able to move. Not because the money isn't there. Because the thing on the other side doesn't have a shape yet."}],["$","script",null,{"type":"application/ld+json","src":"/schema-book.json"}],["$","link",null,{"href":"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css","rel":"stylesheet"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@400;500;600&display=swap","rel":"stylesheet"}],["$","style",null,{"children":"$2"}],"$L3"]}],"$L4"]}]]}],{"children":["blog","$L5",{"children":[["slug","working-at-65","d"],"$L6",{"children":["__PAGE__","$L7",{},null,false]},null,false]},null,false]},null,false],"$L8",false]],"m":"$undefined","G":["$9",[]],"s":false,"S":true}
+b:I[8720,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-918f59b127993021.js"],"default"]
+c:I[9766,[],""]
+d:I[8924,[],""]
+e:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","953","static/chunks/app/blog/%5Bslug%5D/page-b831e5e7c799a6b5.js"],""]
+11:I[4431,[],"ViewportBoundary"]
+13:I[4431,[],"MetadataBoundary"]
+14:"$Sreact.suspense"
+a:T430,
+              !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.__SV=1,t.createElement("script")).src="https://cdn.jsdelivr.net/npm/posthog-js@4/dist/posthog.min.js",t.head.appendChild(e=t.createElement("script")),e.onload=function(){window.posthog.init("phc_IdAZHvksJADiN0p8Cm7H73jh5NT6oQaoYfUgaPPRB28",{api_host:"https://app.posthog.com",autocapture:false})}},r=function(t,e){return function(){var n=Array.prototype.slice.call(arguments,0);e&&t(n.concat(n)),window.posthog.capture.apply(window.posthog,n)}},o=function(t,e){return function(){var n=Array.prototype.slice.call(arguments,0);e&&t(n.concat(n)),window.posthog.people.set.apply(window.posthog,n)}},n="capture identify alias people.set set_config".split(" "),p=r.bind(null,"event");for(var i=0;i<n.length;i++)window.posthog[n[i]]=p;window.posthog.register=r.bind(null,"register"),window.posthog.unregister=r.bind(null,"unregister"),window.posthog.get_distinct_id=r.bind(null,"get_distinct_id"),window.posthog.get_session_id=r.bind(null,"get_session_id")})(document,window.posthog||[]);
+            3:["$","script",null,{"dangerouslySetInnerHTML":{"__html":"$a"}}]
+4:["$","body",null,{"className":"min-h-screen flex flex-col","children":[["$","$Lb",null,{}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  var toggle = document.getElementById('mobile-menu-toggle');\n  var menu = document.getElementById('mobile-menu');\n  if (!toggle || !menu) return;\n  toggle.addEventListener('click', function() {\n    var isOpen = menu.classList.contains('hidden') === false;\n    if (isOpen) {\n      menu.classList.add('hidden');\n      toggle.setAttribute('aria-expanded', 'false');\n    } else {\n      menu.classList.remove('hidden');\n      toggle.setAttribute('aria-expanded', 'true');\n    }\n  });\n})();\n        "}}],["$","$Lc",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Ld",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],["$","footer",null,{"className":"mt-auto py-14 bg-slate-950 text-slate-400 border-t border-slate-800","children":["$","div",null,{"className":"max-w-5xl mx-auto px-6 text-center","children":[["$","div",null,{"className":"flex justify-center gap-8 mb-8 flex-wrap","children":[["$","$Le",null,{"href":"/","className":"hover:text-amber-400 transition-colors","children":"Home"}],["$","$Le",null,{"href":"/about","className":"hover:text-amber-400 transition-colors","children":"About"}],["$","$Le",null,{"href":"/blog","className":"hover:text-amber-400 transition-colors","children":"Blog"}],["$","$Le",null,{"href":"/faq","className":"hover:text-amber-400 transition-colors","children":"FAQ"}],["$","$Le",null,{"href":"/jumpstart","className":"hover:text-amber-400 transition-colors","children":"Free Guide"}]]}],["$","p",null,{"className":"text-slate-500","children":"© 2026 Nick Constantinou. All rights reserved."}]]}]}]]}]
+5:["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Ld",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+6:["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Ld",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+f:T225a,
+      <p><strong>The traditional retirement age is dead.</strong></p>
+      
+      <p>Once upon a time, 65 was the magic number. You worked until 65, collected your gold watch, and rode off into the sunset.</p>
+      
+      <p>Those days are gone.</p>
+      
+      <p>Today, "working at 65" means something entirely different. It might mean:</p>
+      
+      <ul>
+        <li>Working full-time because you need to</li>
+        <li>Working part-time because you want to</li>
+        <li>Transitioning gradually into retirement</li>
+        <li>Starting a new career entirely</li>
+        <li>Building a business you've always dreamed of</li>
+      </ul>
+      
+      <p>And here's the truth nobody talks about: <strong>working at 65 might actually be better than the traditional retirement model.</strong></p>
+      
+      <hr />
+      
+      <h2>The Demise of the Traditional Timeline</h2>
+      
+      <p>The concept of retirement at 65 was invented in a very different era:</p>
+      
+      <ul>
+        <li>People didn't live much past 65</li>
+        <li>Pensions provided guaranteed income</li>
+        <li>Healthcare costs weren't astronomical</li>
+        <li>Work was more physical, less cognitive</li>
+      </ul>
+      
+      <p>Now? You might live to 95. Pensions are rare. Healthcare costs are crushing. And mental work can continue well into your 70s and beyond.</p>
+      
+      <p>The old model doesn't fit the new reality.</p>
+      
+      <h2>The New Working at 65 Models</h2>
+      
+      <p>Here are the ways people are "working at 65" today:</p>
+      
+      <h3>1. The Bridge Job</h3>
+      
+      <p>Working at 65 to bridge the gap to full retirement. Maybe you're 65 but your spouse is younger, or you need a few more years of savings.</p>
+      
+      <p>This is practical. And it's increasingly common.</p>
+      
+      <h3>2. The Encore Career</h3>
+      
+      <p>Starting something entirely new at 65. Using your skills in a different context—perhaps non-profit work, consulting, or entrepreneurship.</p>
+      
+      <p>This is inspiring. And it's becoming more popular.</p>
+      
+      <h3>3. The Gradual Transition</h3>
+      
+      <p>Moving from full-time to part-time over several years. Reducing hours while maintaining engagement.</p>
+      
+      <p>This is sustainable. And it beats the abrupt "cliff" retirement.</p>
+      
+      <h3>4. The Passion Project</h3>
+      
+      <p>Working at 65 because you want to, not because you have to. Building a business around something you love.</p>
+      
+      <p>This is the ideal. And it's achievable for many.</p>
+      
+      <h3>5. The Unplanned Continuation</h3>
+      
+      <p>Working at 65 because retirement just... didn't happen. Either financially necessary or just because you weren't ready.</p>
+      
+      <p>This is reality for many. And there's no shame in it.</p>
+      
+      <h2>Why Working at 65 Is Actually Smart</h2>
+      
+      <p>Here's the contrarian view: <strong>working at 65 (or beyond) is often better than traditional retirement.</strong></p>
+      
+      <h3>The Financial Argument</h3>
+      
+      <p>Let's do some math:</p>
+      
+      <ul>
+        <li>If you retire at 65 and live to 95, you need 30 years of expenses</li>
+        <li>If you work until 70 and then retire to 95, you need only 25 years</li>
+        <li>Plus, working until 70 means more savings AND larger Social Security</li>
+      </ul>
+      
+      <p>That difference is massive. Working a few more years dramatically reduces the risk of outliving your money.</p>
+      
+      <h3>The Health Argument</h3>
+      
+      <p>Research consistently shows that work is good for your health:</p>
+      
+      <ul>
+        <li>Cognitive engagement prevents decline</li>
+        <li>Social connections combat isolation</li>
+        <li>Structure provides mental health benefits</li>
+        <li>Purpose keeps you motivated</li>
+      </ul>
+      
+      <p>Work can literally add years to your life.</p>
+      
+      <h3>The Identity Argument</h3>
+      
+      <p>As discussed in earlier posts, identity loss is one of the biggest challenges in retirement.</p>
+      
+      <p>Working—at any age—provides structure, purpose, and identity. If those are valuable to you, why give them up?</p>
+      
+      <h3>The Social Argument</h3>
+      
+      <p>Work provides a community. Friends. Colleagues. A sense of belonging.</p>
+      
+      <p>If you're not actively building other social infrastructure, work might be the most efficient way to maintain it.</p>
+      
+      <h2>The Problems with Working at 65</h2>
+      
+      <p>Of course, it's not all positive:</p>
+      
+      <h3>Age Discrimination</h3>
+      
+      <p>Let's be real: age discrimination exists. It can be harder to find work, get promoted, or be taken seriously.</p>
+      
+      <p>But it's not universal—and it's changing.</p>
+      
+      <h3>Physical Limitations</h3>
+      
+      <p>Some jobs become harder to do as you age. Physical limitations might require job changes, accommodations, or reductions.</p>
+      
+      <h3>Burnout</h3>
+      
+      <p>If you're working at 65 because you can't afford to stop, burnout is a real risk. The stress can negate the benefits.</p>
+      
+      <h3>Company Culture</h3>
+      
+      <p>Not every workplace is welcoming to older workers. Some cultures are youth-obsessed and dismissive of experience.</p>
+      
+      <h2>How to Make Working at 65 Work for You</h2>
+      
+      <p>If you're going to work at 65 (or beyond), here's how to make it positive:</p>
+      
+      <h3>1. Choose Work You Enjoy</h3>
+      
+      <p>Life's too short to spend it doing work you hate.</p>
+      
+      <p>At 65, you have leverage: you've likely built savings, you have experience, and you don't need work as desperately as you did at 25.</p>
+      
+      <p>Use that leverage to find work that matters to you.</p>
+      
+      <h3>2. Prioritize Your Health</h3>
+      
+      <p>Set boundaries. Take time off. Protect your energy.</p>
+      
+      <p>Working at 65 should enhance your life, not drain it.</p>
+      
+      <h3>3. Build Your Exit</h3>
+      
+      <p>Even if you're working at 65, plan for the eventual transition.</p>
+      
+      <p>Continue building relationships outside work. Develop interests. Prepare for the day when work might not be an option.</p>
+      
+      <h3>4. Stay Relevant</h3>
+      
+      <p>The world changes fast. Stay current in your field. Learn new skills. Remain valuable.</p>
+      
+      <p>Age discrimination is real, but it's harder to justify when you're genuinely current.</p>
+      
+      <h3>5. Negotiate Your Terms</h3>
+      
+      <p>At 65, you're in a strong position to negotiate:</p>
+      
+      <ul>
+        <li>Schedule flexibility</li>
+        <li>Remote work options</li>
+        <li>Reduced hours</li>
+        <li>Consulting arrangements</li>
+        <li>Project-based work</li>
+      </ul>
+      
+      <p>Don't accept the traditional full-time model if it doesn't work for you.</p>
+      
+      <h2>The Social Security Question</h2>
+      
+      <p>When to claim Social Security is a key decision:</p>
+      
+      <ul>
+        <li><strong>Claiming at 62</strong>: Reduced benefits (70% of full)</li>
+        <li><strong>Claiming at 67</strong>: Full benefits (100% of full)</li>
+        <li><strong>Claiming at 70</strong>: Maximum benefits (124% of full)</li>
+      </ul>
+      
+      <p>The breakeven point is typically around 80. If you expect to live past 80, waiting until 70 makes financial sense.</p>
+      
+      <p>But it's not just about math. It's about your situation:</p>
+      
+      <ul>
+        <li>If you're still working and earning well, waiting makes sense</li>
+        <li>If you need the income, claiming early might be necessary</li>
+        <li>If you're in poor health, claiming early might be wise</li>
+      </ul>
+      
+      <h2>The New Narrative</h2>
+      
+      <p>Here's the shift in thinking we need:</p>
+      
+      <p><strong>Working at 65 isn't a failure to retire. It's a valid life choice.</strong></p>
+      
+      <p>Some people will retire at 60 and love it. Some will work until 75 and thrive. Neither is wrong.</p>
+      
+      <p>The old narrative—that retirement is the goal and work is something to escape—is outdated.</p>
+      
+      <p>The new narrative: <strong>life is for living, and work can be part of that life, regardless of age.</strong></p>
+      
+      <h2>What About You?</h2>
+      
+      <p>Where do you stand on the working-at-65 question?</p>
+      
+      <p>Are you planning to stop entirely? Continue working? Transition gradually?</p>
+      
+      <p>There's no right answer. But there is a right answer for you—once you've done the honest assessment.</p>
+    7:["$","$1","c",{"children":[["$","main",null,{"className":"py-16","children":["$","article",null,{"className":"max-w-3xl mx-auto px-4","children":[["$","$Le",null,{"href":"/blog","className":"inline-flex items-center text-amber-600 hover:text-amber-700 mb-8 font-medium transition-colors","children":[["$","svg",null,{"className":"w-4 h-4 mr-2","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M15 19l-7-7 7-7"}]}],"Back to Blog"]}],["$","h1",null,{"className":"text-4xl font-bold mb-4 text-slate-900","children":"Working at 65: The New Normal That's Changing Everything"}],["$","p",null,{"className":"text-xl text-slate-600 mb-8","children":"The traditional retirement age is dead. Here's why working at 65 might actually be better."}],["$","div",null,{"className":"prose-lg text-slate-700","dangerouslySetInnerHTML":{"__html":"$f"}}]]}]}],null,"$L10"]}]
+8:["$","$1","h",{"children":[null,[["$","$L11",null,{"children":"$L12"}],null],["$","$L13",null,{"children":["$","div",null,{"hidden":true,"children":["$","$14",null,{"fallback":null,"children":"$L15"}]}]}]]}]
+16:I[4431,[],"OutletBoundary"]
+18:I[5278,[],"AsyncMetadataOutlet"]
+10:["$","$L16",null,{"children":["$L17",["$","$L18",null,{"promise":"$@19"}]]}]
+12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+17:null
+19:{"metadata":[["$","title","0",{"children":"Working at 65: The New Normal That's Changing Everything — The Anti-Retirement Guide"}],["$","meta","1",{"name":"description","content":"Reflections on retirement, identity, and designing your next chapter. For people in their 50s and 60s based in the UK."}],["$","meta","2",{"name":"robots","content":"index, follow"}],["$","link","3",{"rel":"canonical","href":"https://nickconstantinou.github.io/the-anti-retirement-guide-marketing/blog/working-at-65/"}],["$","link","4",{"rel":"alternate","hrefLang":"en-GB","href":"https://nickconstantinou.github.io/the-anti-retirement-guide-marketing/blog/working-at-65/"}],["$","meta","5",{"property":"og:title","content":"Working at 65: The New Normal That's Changing Everything — The Anti-Retirement Guide"}],["$","meta","6",{"property":"og:description","content":"Reflections on retirement, identity, and designing your next chapter. For people in their 50s and 60s based in the UK."}],["$","meta","7",{"property":"og:url","content":"https://nickconstantinou.github.io/the-anti-retirement-guide-marketing/blog/working-at-65/"}],["$","meta","8",{"property":"og:locale","content":"en_GB"}],["$","meta","9",{"property":"og:type","content":"article"}],["$","meta","10",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","11",{"name":"twitter:title","content":"The Anti-Retirement Guide | Design Your Next Chapter"}],["$","meta","12",{"name":"twitter:description","content":"For people who are close to retirement but haven't been able to move. Not because the money isn't there. Because the thing on the other side doesn't have a shape yet."}]],"error":null,"digest":"$undefined"}
+15:"$19:metadata"

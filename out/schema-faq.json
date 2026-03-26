@@ -1,0 +1,54 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is 'How I FIREd Myself' about?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This book is for people aged 50-65 who are thinking about retirement but aren't ready to stop. It's about designing your next chapter—not fading away."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is this book for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anyone 50-65 who is: thinking about retirement but anxious, has a spouse at different retirement timelines, worries about identity beyond their career, wants practical guidance, or is an introvert concerned about social connections in retirement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the main message?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Retirement is not the ending—it is a beginning. The book reframes retirement as launching into your next chapter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm a physical worker—can this book help me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. If your body is starting to feel decades of manual labor, you need a plan that accounts for physical limitations. We cover stress-testing your financial plan against reduced earning capacity, exploring less physical income streams, and designing a retirement that works with your body, not against it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm single—do I need a different approach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes—and that's a good thing. Most retirement advice assumes a spouse or partner. This book addresses the unique challenges of singles: no second income to fall back on, different social dynamics, planning for one person instead of two, and building a support network that replaces what a partner might typically provide."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I rent—can I still retire comfortably?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You absolutely can. This book doesn't assume you own property. We explore renting in retirement (which can actually be more flexible), building a larger nest egg since you're not tying up capital in real estate, geographic flexibility, and the emotional considerations of not having 'owned' your home. Your path is different—but it's not lesser."
+      }
+    }
+  ]
+}
