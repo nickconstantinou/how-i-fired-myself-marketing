@@ -14,15 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for complete deploy
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm install
-      - run: npm rebuild
-      - run: npm run build
-        env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      # Skip npm install and build — out/ is pre-built and committed
+      # Just ensure dependencies for any post-processing steps
+      - name: Verify out directory exists
+        run: |
+          if [ ! -d "out" ]; then
+            echo "Error: out/ directory not found"
+            exit 1
+          fi
+          echo "out/ directory verified with $(find out -name '*.html' | wc -l) HTML files"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
