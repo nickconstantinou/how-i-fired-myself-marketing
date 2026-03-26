@@ -31,7 +31,7 @@ Deno.serve(async (req: Request) => {
   const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
 
   const response = await fetch(
-    `${supabaseUrl}/rest/v1/marketing_leads?email=eq.${encodeURIComponent(email)}`,
+    `${supabaseUrl}/rest/v1/leads?email=eq.${encodeURIComponent(email)}`,
     {
       method: 'DELETE',
       headers: {

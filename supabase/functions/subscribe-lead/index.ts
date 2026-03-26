@@ -91,7 +91,7 @@ Deno.serve(async (req: Request) => {
     }),
 
     // 2. Save to Supabase (subscriber record)
-    fetch(`${supabaseUrl}/rest/v1/marketing_leads`, {
+    fetch(`${supabaseUrl}/rest/v1/leads`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
