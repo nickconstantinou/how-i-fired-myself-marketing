@@ -1,16 +1,18 @@
-# Requirements: How I FIREd Myself Website
+# Requirements: The Anti-Retirement Guide Website
 
 ## Project Overview
-- **Project name**: How I FIREd Myself Website
+- **Project name**: The Anti-Retirement Guide
 - **Type**: Marketing website + blog for retirement book
-- **Target users**: 50-65 year old pre-retirees
+- **Target users**: 50-65 year old pre-retirees (UK)
 - **Goal**: Book promotion, lead capture, blog content delivery
+- **Launch date**: 7 April 2026
 
 ## Tech Stack
-- Framework: Next.js + Tailwind CSS
-- Deployment: GitHub Pages
-- Custom Domain: howifiredmyself.com
-- Database: Supabase (leads table)
+- Framework: Next.js 15 + Tailwind CSS
+- Deployment: GitHub Pages (auto-deploy on push to main)
+- Custom Domain: theantiretirementguide.co.uk (live, IONOS, DKIM verified)
+- Database: Supabase (project: araqigsimkjsmwhnjesv) — `marketing_leads` table
+- Email: Resend API (welcome emails + lead magnets) — NOT Klaviyo
 
 ## Pages Required
 
@@ -85,8 +87,11 @@ CREATE TABLE leads (
 - Output: out/ directory for GitHub Pages
 
 ## Success Criteria
-- [ ] Homepage with hero + lead capture
-- [ ] Blog with 10+ posts
-- [ ] FAQ with schema markup
-- [ ] Email form → Supabase
-- [ ] Custom domain configured
+- [x] Homepage with hero + lead capture
+- [x] Blog with 10+ posts
+- [x] FAQ with schema markup
+- [x] Email form → Supabase + Resend welcome email
+- [x] Custom domain configured (theantiretirementguide.co.uk)
+- [x] Persona-targeted landing pages (cluster-a, cluster-b, cluster-c)
+- [x] Unsubscribe flow
+- [x] SEO: meta tags, OG, sitemap, robots.txt, schema markup

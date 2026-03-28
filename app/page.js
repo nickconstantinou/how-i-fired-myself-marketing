@@ -9,7 +9,7 @@ export default function Home() {
           <p className="text-sm uppercase tracking-widest text-amber-400 mb-6 font-semibold">Available 7 April 2026</p>
           <h1 className="font-bold mb-6 tracking-tight">The Anti-Retirement Guide</h1>
           <p className="text-xl md:text-2xl mb-4 text-slate-300 max-w-2xl mx-auto leading-relaxed" style={{fontFamily: "'Playfair Display', Georgia, serif", fontStyle: 'italic'}}>
-            Design Your Next Chapter
+            For people who are financially ready, quietly terrified, and absolutely certain that sitting on a sofa isn&apos;t the answer.
           </p>
           <p className="text-lg mb-10 text-slate-300 max-w-2xl mx-auto leading-relaxed">
             For people who are close — or financially ready — but haven&apos;t been able to move. Not because the money isn&apos;t there. Because the thing on the other side doesn&apos;t have a shape yet.
@@ -148,16 +148,16 @@ export default function Home() {
           <h2 className="font-bold text-center mb-12">What readers say</h2>
           <div className="grid gap-6 md:grid-cols-3 w-full">
             <blockquote className="card w-full">
-              <p className="text-slate-700 mb-4 italic">&quot;I was 52 and terrified. This book showed me I still had options — and time. It asked the questions I&apos;d been avoiding for two years.&quot;</p>
-              <cite className="block not-italic font-semibold text-amber-600">— Dave, 52</cite>
+              <p className="text-slate-700 mb-4 italic">&quot;Good salary, good pension, and I was dying inside. I&apos;d been telling myself another five years for about four years. This book helped me see that the thing stopping me wasn&apos;t the money — it was that I&apos;d built my entire identity around my job title. I handed my notice in eight months after reading it.&quot;</p>
+              <cite className="block not-italic font-semibold text-amber-600">— Dave, 52, former IT manager</cite>
             </blockquote>
             <blockquote className="card w-full">
-              <p className="text-slate-700 mb-4 italic">&quot;Divorce at 58 left me starting over. Every retirement plan assumed a spouse. This book addressed the unique challenges I actually faced.&quot;</p>
+              <p className="text-slate-700 mb-4 italic">&quot;Every other retirement book assumed a spouse, a house, and a plan you&apos;d made together. I&apos;m divorced, renting, and on my own timeline. This was the only one that addressed what that actually looks like — the finances, the identity, the social gap. It didn&apos;t give me a template. It gave me a way of thinking.&quot;</p>
               <cite className="block not-italic font-semibold text-amber-600">— Anonymous, 58</cite>
             </blockquote>
             <blockquote className="card w-full">
-              <p className="text-slate-700 mb-4 italic">&quot;My knees aren&apos;t what they were at 40. This helped me plan an exit that doesn&apos;t rely on working until 67. I have a date now.&quot;</p>
-              <cite className="block not-italic font-semibold text-amber-600">— Mike, 57</cite>
+              <p className="text-slate-700 mb-4 italic">&quot;My knees have been telling me for two years that I&apos;ve got maybe a decade left on ladders. I knew it, but I hadn&apos;t done anything about it. The book made me stop treating that as a vague future problem and start treating it as a planning fact. I&apos;m now training my son to take over and I have a transition timeline.&quot;</p>
+              <cite className="block not-italic font-semibold text-amber-600">— Mike, 57, carpenter</cite>
             </blockquote>
           </div>
         </div>
@@ -181,10 +181,10 @@ export default function Home() {
         <div className="max-w-2xl mx-auto px-6 text-center">
           <h2 className="font-bold mb-6">About the author</h2>
           <p className="text-lg text-slate-700">
-            Nick Constantinou writes from years of watching people get this transition right and catastrophically wrong — not from a beach, and not from a position of having found the answers.
+            Nick Constantinou is 54, still working, and writing from inside the decision he hasn&apos;t made yet. He has a mortgage with seven years left, two children in university, and a wife who isn&apos;t ready to retire.
           </p>
           <p className="text-lg mt-4 text-slate-700">
-            He makes no promises about the next chapter. He helps you think clearly about what it could be.
+            He&apos;s not a financial adviser, not a life coach, and not someone who has already figured this out. He wrote the book he couldn&apos;t find: honest about the fear, specific about the money, and clear-eyed about the parts that don&apos;t resolve neatly.
           </p>
         </div>
       </section>

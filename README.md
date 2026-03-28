@@ -1,6 +1,6 @@
-# How I FIREd Myself Website
+# The Anti-Retirement Guide — Marketing Website
 
-Marketing website and blog for the retirement book "How I FIREd Myself".
+Marketing website for *The Anti-Retirement Guide* by Nick Constantinou.
 
 ## Tech Stack
 - Next.js 14 + Tailwind CSS
