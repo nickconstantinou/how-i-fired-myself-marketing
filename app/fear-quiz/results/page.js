@@ -66,13 +66,12 @@ async function fetchResult(id) {
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
     const res = await fetch(
-      `${supabaseUrl}/rest/v1/quiz_responses?id=eq.${encodeURIComponent(id)}&select=archetype,fear_scores&limit=1`,
+      `${supabaseUrl}/rest/v1/marketing_leads?id=eq.${encodeURIComponent(id)}&select=id,metadata,email,created_at&limit=1`,
       {
         headers: {
           'apikey': supabaseKey,
           'Authorization': `Bearer ${supabaseKey}`,
         },
-        // Next.js cache control — don't cache results pages
         cache: 'no-store',
       },
     )
@@ -80,7 +79,11 @@ async function fetchResult(id) {
     if (!res.ok) return null
     const data = await res.json()
     if (!Array.isArray(data) || data.length === 0) return null
-    return data[0]
+    const row = data[0]
+    return {
+      archetype: row.metadata?.archetype,
+      scores: row.metadata?.fear_scores,
+    }
   } catch {
     return null
   }
