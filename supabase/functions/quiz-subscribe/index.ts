@@ -111,13 +111,18 @@ function buildResultsHtml(name: string, archetype: string, scores: Record<string
   </div>
 
   <div style="text-align: center; margin: 36px 0;">
-    <a href="https://www.amazon.co.uk/dp/XXXXXXXXXX" style="display: inline-block; background: #b45309; color: white; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: bold;">
-      Get the book on Amazon
-    </a>
+    <div style="background: #fffbeb; border: 2px solid #b45309; border-radius: 12px; padding: 24px; display: inline-block;">
+      <p style="font-size: 18px; color: #1a1a2e; font-weight: bold; margin: 0 0 8px;">
+        Early access — launch price
+      </p>
+      <p style="font-size: 14px; color: #555; margin: 0 0 16px;">
+        Join the launch list and get the book at the pre-order price — before it goes live.
+      </p>
+      <a href="${baseUrl}/launch" style="display: inline-block; background: #b45309; color: white; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: bold;">
+        Reserve my early access
+      </a>
+    </div>
   </div>
-  <p style="font-size: 12px; color: #aaa; text-align: center;">
-    The Anti-Retirement Guide — Available on Amazon UK
-  </p>
 </body>
 </html>`
 }

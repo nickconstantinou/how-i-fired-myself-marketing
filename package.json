@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --test app/lib/quizScoring.test.js",
+    "test:watch": "node --test --watch app/lib/quizScoring.test.js"
   },
   "dependencies": {
     "next": "15.5.14",
@@ -16,6 +18,7 @@
   "devDependencies": {
     "autoprefixer": "10.4.20",
     "postcss": "8.4.49",
+    "supabase": "^2.84.5",
     "tailwindcss": "3.4.17"
   }
 }
