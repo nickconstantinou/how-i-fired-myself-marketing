@@ -14,8 +14,8 @@ export default function Home() {
           <p className="text-lg mb-10 text-slate-300 max-w-2xl mx-auto leading-relaxed">
             For people who are close — or financially ready — but haven&apos;t been able to move. Not because the money isn&apos;t there. Because the thing on the other side doesn&apos;t have a shape yet.
           </p>
-          <Link href="/jumpstart" className="btn-primary text-lg">
-            Get the Free First Week Guide →
+          <Link href="/fear-quiz" className="btn-primary text-lg">
+            Take the Fear Quiz →
           </Link>
         </div>
       </section>
@@ -170,8 +170,8 @@ export default function Home() {
           <p className="text-lg mb-8 text-slate-200">
             Seven days of exercises to get unstuck. No commitment required.
           </p>
-          <Link href="/jumpstart" className="btn-primary text-lg">
-            Get the Free First Week Guide →
+          <Link href="/fear-quiz" className="btn-primary text-lg">
+            Take the Fear Quiz →
           </Link>
         </div>
       </section>
@@ -194,7 +194,7 @@ export default function Home() {
 
 // PostHog CTA tracking — runs after hydration
 if (typeof window !== 'undefined') {
-  window.posthog && document.querySelectorAll('a[href="/jumpstart"]').forEach(function(el) {
+  window.posthog && document.querySelectorAll('a[href="/fear-quiz"]').forEach(function(el) {
     el.addEventListener('click', function() {
       window.posthog.capture('cta_click', {
         cta_text: el.textContent.trim(),
