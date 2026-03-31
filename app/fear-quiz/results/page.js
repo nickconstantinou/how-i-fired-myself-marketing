@@ -66,7 +66,7 @@ async function fetchResult(id) {
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
     const res = await fetch(
-      `${supabaseUrl}/rest/v1/quiz_responses?id=eq.${encodeURIComponent(id)}&select=id,archetype,fear_scores,email,created_at&limit=1`,
+      `${supabaseUrl}/rest/v1/marketing_leads?id=eq.${encodeURIComponent(id)}&select=id,metadata,email,created_at&limit=1`,
       {
         headers: {
           'apikey': supabaseKey,
@@ -81,8 +81,8 @@ async function fetchResult(id) {
     if (!Array.isArray(data) || data.length === 0) return null
     const row = data[0]
     return {
-      archetype: row.archetype,
-      scores: row.fear_scores,
+      archetype: row.metadata?.archetype,
+      scores: row.metadata?.fear_scores,
     }
   } catch {
     return null
@@ -267,19 +267,19 @@ function FearQuizResultsPage() {
           {/* Launch CTA */}
           <div className="bg-amber-400/10 border-2 border-amber-400/30 rounded-xl p-6 mb-6 text-center">
             <p className="text-amber-400 text-sm font-semibold uppercase tracking-wider mb-2">
-              Early access — launch price
+              Launch list — half price
             </p>
             <p className="text-white font-semibold text-lg mb-1">
-              Reserve your spot
+              Get half-price early access
             </p>
             <p className="text-slate-400 text-sm mb-4">
-              Join the launch list and get the book at the pre-order price — before it goes live.
+              Reserve my early access and get the book at the launch discount — before it goes to the public.
             </p>
             <a
               href="/launch"
               className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-8 py-4 rounded-xl transition text-base sm:text-lg w-full sm:w-auto"
             >
-              Join the launch list
+              Reserve my early access
             </a>
           </div>
 
