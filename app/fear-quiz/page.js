@@ -119,7 +119,8 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
     }
   }, [])
 
-  const handleSubmit = async (e) => {
+  // answersSource is passed explicitly to avoid stale closure from React 18 batched state updates
+  const handleSubmit = async (e, answersSource) => {
     e.preventDefault()
     if (!consent) {
       setError('Please tick the consent box to continue.')
@@ -129,14 +130,24 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
     setLoading(true)
     setError('')
 
-    // Calculate archetype
-    const result = scoreQuiz(answers)
+    // Calculate archetype — use answersSource (explicit param) not answers (closure)
+    const safeAnswers = Array.isArray(answersSource) && answersSource.length === 8
+      ? answersSource
+      : Array(8).fill('NO')
+    const result = scoreQuiz(safeAnswers)
+    // Ensure all archetype keys are always present and numeric (defensive)
+    const fearScores = {
+      identity_hollow:  Number(result.scores.identity_hollow) || 0,
+      spouse_mismatch:  Number(result.scores.spouse_mismatch) || 0,
+      purpose_void:     Number(result.scores.purpose_void) || 0,
+      financial_doubter: Number(result.scores.financial_doubter) || 0,
+    }
     const payload = {
       name,
       email,
       archetype: result.archetype,
-      fearScores: result.scores,
-      consentGiven: consent,
+      fearScores,
+      consentGiven: !!consent,
     }
 
     // Persist form data so retry doesn't lose it
@@ -183,7 +194,7 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
       </p>
 
       <form
-        onSubmit={handleSubmit}
+        onSubmit={(e) => handleSubmit(e, answers)}
         className="bg-slate-800 border border-slate-700 rounded-xl p-6 sm:p-8 space-y-5"
         noValidate
       >
@@ -230,7 +241,7 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
             className="mt-1 w-4 h-4 rounded border-slate-600 bg-slate-900 text-amber-400 focus:ring-amber-400 cursor-pointer"
           />
           <label htmlFor="quiz-consent" className="text-sm text-slate-400 leading-snug cursor-pointer">
-            I agree to receive my Fear Profile results by email. I can unsubscribe at any time.
+            I agree to join the launch list and receive my Fear Profile results by email. Unsubscribe anytime.
           </label>
         </div>
 
@@ -250,7 +261,7 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
         </button>
 
         <p className="text-xs text-slate-500 text-center">
-          No spam. No lists. Just your results and one book recommendation.
+          You'll be added to the book launch list. Unsubscribe anytime.
         </p>
       </form>
     </div>
