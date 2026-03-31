@@ -151,7 +151,6 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
       fearScores,
       consentGiven: !!consent,
     }
-    )
 
     // Persist form data so retry doesn't lose it
     saveEmailForm({ name, email, consent })
@@ -169,6 +168,7 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
           body: JSON.stringify(payload),
         },
       )
+
       if (!res.ok) {
         let msg = `Submission failed (${res.status})`
         try { const j = await res.json(); if (j.error) msg = j.error } catch { /* ignore */ }
@@ -180,7 +180,6 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
       onSuccess(data.responseId)
 
     } catch (err) {
-      console.error('[handleSubmit] catch error:', err)
       setError(err.message || 'Something went wrong. Please try again.')
       setLoading(false)
       onRetryNeeded()
@@ -319,7 +318,6 @@ export default function FearQuizPage() {
         router.push(`/fear-quiz/results?id=${encodeURIComponent(id)}`)
       } else {
         // Fallback if responseId missing — redirect without id, results page will show error
-        ')
         router.push('/fear-quiz/results')
       }
     }, 800)
