@@ -1,11 +1,12 @@
-// Supabase Edge Function — quiz-subscribe
-// Handles Fear Quiz completion:
-//  1. Validates request
-//  2. Upserts lead into marketing_leads (source='quiz')
-//  3. Sends full Fear Profile results email immediately
-//  4. Returns response ID
-//
-// Uses: marketing_leads table (same as /jumpstart). No newsletter_subscribers needed.
+/**
+ * Supabase Edge Function — quiz-subscribe
+ * Handles Fear Quiz completion:
+ *  1. Validates request
+ *  2. Inserts result into quiz_responses (RLS allows anon read by ID)
+ *  3. Upserts lead into marketing_leads (mailing list — write-only from client)
+ *  4. Sends full Fear Profile results email immediately
+ *  5. Returns quiz_responses UUID as responseId
+ */
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -29,7 +30,6 @@ const ARCHETYPE_DATA = {
     chapter: 'Chapter 5: Identity After the Title',
     chapterSummary: 'What belonging, rhythm and purpose look like after the function is gone.',
     recommendedAction: 'Take the Third Tuesday Test (Chapter 4) to separate the financial question from the identity question.',
-    // Persona-validated paragraph (score: 0.96) — UK 50+, pre-retirement
     paragraph: `You've started imagining the person you become on day one of retirement — and you can't quite hold his shape. In the office you're the one people come to. Thirty years of being the person who sorts things out. And lately you've been thinking about what happens when no one needs that version of you any more. Not eventually. On the actual first day. What does your wife know you as, without the job title? What do your friends call you? You've started doing this thing lately where you quietly say your own name, your full name, to hear what it sounds like without the Regional Operations Manager in front of it. You don't know what that means yet. That's what frightens you.`,
   },
   spouse_mismatch: {
@@ -38,7 +38,6 @@ const ARCHETYPE_DATA = {
     chapter: 'Chapter 3: The Spouse Conversation',
     chapterSummary: 'The framework most couples avoid for years until a date forces it.',
     recommendedAction: "Don't read this chapter alone. Read it together.",
-    // Persona-validated paragraph (score: 0.96) — UK 50+, pre-retirement
     paragraph: `You've been married thirty years and retirement has somehow never come up as a proper conversation. You've skirted around it — mentioned what Dave from work is doing, asked whether Margaret seems pleased — but never sat down and worked out if you're even aiming for the same departure date. Partly because you don't want to hear the answer. You've got a feeling she might be thinking very differently to you. Maybe she wants to keep working. Maybe she's been dreading you being home. You don't know and you've decided not to find out. It's easier not to know. People ask if you're looking forward to it and you just say "can't wait" and leave it there.`,
   },
   purpose_void: {
@@ -47,7 +46,6 @@ const ARCHETYPE_DATA = {
     chapter: 'Chapter 6: Year One Month by Month',
     chapterSummary: 'Designing the first 12 months before Day One arrives.',
     recommendedAction: 'Design next year before it arrives. The fear subsides when there\'s a plan.',
-    // Persona-validated paragraph (score: 0.96) — UK 50+, pre-retirement
     paragraph: `The figures add up. You've made your peace with not being the Regional Operations Manager any more. What you can't sleep for is the nothing. You imagine Tuesday morning at 7:15 with nowhere to be. Fourteen hours in a house that's suddenly enormous. Your neighbour going off to work while you stand in your own kitchen drinking tea that tastes different for some reason. You've started setting your alarm for the weekends, earlier than you need to, just to feel what it would be like to not have to go. You haven't told anyone that. You don't quite know why you haven't told anyone that. Something about it feels like a confession.`,
   },
   financial_doubter: {
@@ -56,7 +54,6 @@ const ARCHETYPE_DATA = {
     chapter: 'Chapter 2: The Fear That Doesn\'t Have a Name',
     chapterSummary: 'The fear audit that separates financial readiness from psychological readiness.',
     recommendedAction: 'The fear audit in this chapter will help you separate financial readiness from psychological readiness.',
-    // Persona-validated paragraph (score: 0.95) — UK 50+, pre-retirement
     paragraph: `You've been through three independent financial advisers. Three. You've stress-tested the spreadsheet until it's now slightly yellow at the edges. Your wife says she's not worried and you believe her, which somehow makes it worse. In the IFA's office you nod and say yes that looks reasonable and you tell yourself you'll be fine from next April. And then you get in the car and you sit there for a moment and think: but what if you're not? You've stopped mentioning it to anyone. It just sits there in your chest at four in the morning and you can't quite put your finger on what it's actually afraid of.`,
   },
 }
@@ -72,7 +69,6 @@ function buildResultsHtml(name, archetype, scores) {
     })
     .join('')
 
-  // Persona-validated archetype paragraph — the emotional hook
   const archetypeParagraph = a.paragraph
     ? `<blockquote style="border-left: 4px solid #b45309; padding: 16px 20px; margin: 0 0 32px; background: #fffbeb; font-style: italic; font-size: 16px; color: #444; line-height: 1.8;">
     ${a.paragraph.replace(/\n\n/g, '<br><br>')}
@@ -131,7 +127,6 @@ Deno.serve(async (req: Request) => {
     return new Response('Method not allowed', { status: 405, headers: CORS })
   }
 
-  // Parse body
   let body: {
     email?: string
     name?: string
@@ -176,63 +171,72 @@ Deno.serve(async (req: Request) => {
     })
   }
 
-  const supabaseUrl     = Deno.env.get('SUPABASE_URL')!
-  const supabaseKey     = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
-  const resendKey      = Deno.env.get('RESEND_API_KEY')!
-  const fromEmail      = Deno.env.get('FROM_EMAIL') || 'The Anti-Retirement Guide <noreply@theantiretirementguide.co.uk>'
+  const supabaseUrl = Deno.env.get('SUPABASE_URL')!
+  const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+  const resendKey = Deno.env.get('RESEND_API_KEY')!
+  const fromEmail = Deno.env.get('FROM_EMAIL') || 'The Anti-Retirement Guide <noreply@theantiretirementguide.co.uk>'
 
-  // ── Step 1: Upsert into marketing_leads ─────────────────────────────────────
-  // Source = 'quiz'. project_id = 'anti-retirement-guide' (matches existing).
-  // Upsert = existing leads re-subscribe (status resets to 'active').
+  // ── Step 1: Insert into quiz_responses (RLS allows anon read by ID) ─────────
+  // This is the table the results page reads from.
   let responseId: string
   try {
-    const insertRes = await fetch(`${supabaseUrl}/rest/v1/marketing_leads`, {
+    const insertRes = await fetch(`${supabaseUrl}/rest/v1/quiz_responses`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'apikey': supabaseKey,
         'Authorization': `Bearer ${supabaseKey}`,
-        'Prefer': 'return=representation,resolution=merge-duplicates',
+        'Prefer': 'return=representation',
       },
       body: JSON.stringify({
         email,
-        name: name || email.split('@')[0],
-        project_id: 'anti-retirement-guide',
-        source: 'quiz',
-        status: 'active',
-        subscribed_at: new Date().toISOString(),
-        metadata: { archetype, fear_scores: fearScores },
+        archetype,
+        fear_scores: fearScores,
+        consent_given: consentGiven,
       }),
     })
 
     if (!insertRes.ok) {
       const errText = await insertRes.text()
-      throw new Error(`marketing_leads insert failed (${insertRes.status}): ${errText}`)
+      throw new Error(`quiz_responses insert failed (${insertRes.status}): ${errText}`)
     }
 
     const insertData = await insertRes.json()
-    // merge-duplicates returns the existing row on conflict; upsert returns the row
     if (Array.isArray(insertData) && insertData.length > 0) {
       responseId = insertData[0].id
     } else {
-      // Fallback: fetch the ID
-      const fetchRes = await fetch(
-        `${supabaseUrl}/rest/v1/marketing_leads?email=eq.${encodeURIComponent(email)}&project_id=eq.anti-retirement-guide&select=id&limit=1`,
-        { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } },
-      )
-      const fetchData = await fetchRes.json()
-      responseId = Array.isArray(fetchData) && fetchData.length > 0 ? fetchData[0].id : 'unknown'
+      throw new Error('quiz_responses insert returned no rows')
     }
   } catch (err) {
-    console.error('quiz-subscribe: marketing_leads insert error', err)
-    return new Response(JSON.stringify({ error: 'Failed to save lead' }), {
+    console.error('quiz-subscribe: quiz_responses insert error', err)
+    return new Response(JSON.stringify({ error: 'Failed to save quiz result' }), {
       status: 500,
       headers: { ...CORS, 'Content-Type': 'application/json' },
     })
   }
 
-  // ── Step 2: Send Fear Profile results email (fire and forget) ─────────────
-  // Non-blocking — failures are logged but don't fail the response.
+  // ── Step 2: Upsert into marketing_leads (mailing list — write-only) ──────────
+  // Non-fatal if this fails — the quiz result itself is saved in step 1.
+  fetch(`${supabaseUrl}/rest/v1/marketing_leads`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': supabaseKey,
+      'Authorization': `Bearer ${supabaseKey}`,
+      'Prefer': 'return=minimal,resolution=merge-duplicates',
+    },
+    body: JSON.stringify({
+      email,
+      name: name || email.split('@')[0],
+      project_id: 'anti-retirement-guide',
+      source: 'quiz',
+      status: 'active',
+      subscribed_at: new Date().toISOString(),
+      metadata: { archetype, fear_scores: fearScores },
+    }),
+  }).catch((err) => console.warn('quiz-subscribe: marketing_leads upsert non-fatal error:', err))
+
+  // ── Step 3: Send Fear Profile results email (fire and forget) ───────────────
   const resultsHtml = buildResultsHtml(name || email.split('@')[0], archetype, fearScores)
   fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -248,7 +252,7 @@ Deno.serve(async (req: Request) => {
     }),
   }).catch((err) => console.error('quiz-subscribe: results email failed (non-fatal):', err))
 
-  // ── Step 3: Return response ID to client ────────────────────────────────────
+  // ── Step 4: Return quiz_responses UUID to client ────────────────────────────
   return new Response(JSON.stringify({ success: true, responseId }), {
     headers: { ...CORS, 'Content-Type': 'application/json' },
   })
