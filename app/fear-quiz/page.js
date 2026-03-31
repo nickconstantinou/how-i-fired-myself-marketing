@@ -180,7 +180,8 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
       onSuccess(data.responseId)
 
     } catch (err) {
-      setError(err.message || 'Something went wrong. Please try again.')
+      const msg = err.message || 'Something went wrong. Please try again.'
+      setError(msg)
       setLoading(false)
       onRetryNeeded()
     }
@@ -188,11 +189,22 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
 
   return (
     <div className="w-full max-w-lg mx-auto">
-      <p className="text-xl sm:text-2xl font-semibold text-white leading-relaxed mb-2 text-center">
-        Your results are ready.
+      {/* Badge */}
+      <div className="text-center mb-4">
+        <span className="inline-block bg-amber-400/10 text-amber-400 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full border border-amber-400/30">
+          Half price — launch list only
+        </span>
+      </div>
+
+      {/* Headline */}
+      <p className="text-2xl sm:text-3xl font-bold text-white text-center mb-3 leading-tight">
+        Your Fear Profile.<br />
+        <span className="text-amber-400">Half price when it launches.</span>
       </p>
-      <p className="text-slate-400 text-center mb-8 text-base sm:text-lg">
-        Enter your details to get your full Fear Profile — and the chapter most relevant to where you are right now.
+
+      {/* Intro */}
+      <p className="text-slate-400 text-center mb-8 text-base sm:text-lg leading-relaxed">
+        Get your archetype and relevant chapter now. Join the launch list and get the book at half price — before it goes public.
       </p>
 
       <form
@@ -243,7 +255,7 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
             className="mt-1 w-4 h-4 rounded border-slate-600 bg-slate-900 text-amber-400 focus:ring-amber-400 cursor-pointer"
           />
           <label htmlFor="quiz-consent" className="text-sm text-slate-400 leading-snug cursor-pointer">
-            I agree to join the launch list and get my Fear Profile results by email. I'll also hear first when the book is available at the launch discount — before it goes public. Unsubscribe anytime.
+            Send me my Fear Profile and add me to the launch list. I understand I&apos;ll get the book at half price before it goes public. Unsubscribe anytime.
           </label>
         </div>
 
@@ -259,11 +271,11 @@ function EmailForm({ answers, onSuccess, onRetryNeeded }) {
           disabled={loading}
           className="w-full bg-amber-400 hover:bg-amber-300 disabled:opacity-50 disabled:cursor-not-allowed text-slate-900 font-bold py-4 rounded-xl transition text-base sm:text-lg"
         >
-          {loading ? 'Sending your results...' : 'Send Me My Fear Profile'}
+          {loading ? 'Sending your results...' : 'Send Me My Fear Profile →'}
         </button>
 
         <p className="text-xs text-slate-500 text-center">
-          You'll be added to the book launch list. No spam — one email when it launches. Unsubscribe anytime.
+          Launch list — no spam. One email when it launches. Unsubscribe anytime.
         </p>
       </form>
     </div>
