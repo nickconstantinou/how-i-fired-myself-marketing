@@ -307,5 +307,3 @@ Deno.serve(async (req: Request) => {
     headers: { ...CORS, 'Content-Type': 'application/json' },
   })
 }
-
-// end
