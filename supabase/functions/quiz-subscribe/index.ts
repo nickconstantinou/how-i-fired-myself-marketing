@@ -252,4 +252,40 @@ Deno.serve(async (req: Request) => {
   return new Response(JSON.stringify({ success: true, responseId }), {
     headers: { ...CORS, 'Content-Type': 'application/json' },
   })
-})
+}    // ── Step 1: Insert into quiz_responses (RLS allows anon read by ID) ─────────
+    // This is the table the results page reads from.
+    // Generate UUID client-side to avoid RETURNING clause ambiguity.
+    responseId = crypto.randomUUID()
+
+    try {
+      const insertRes = await fetch(
+        `${supabaseUrl}/rest/v1/quiz_responses`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': supabaseKey,
+            'Authorization': `Bearer ${supabaseKey}`,
+          },
+          body: JSON.stringify({
+            id: responseId,  // Explicit ID so we don't depend on RETURNING
+            email,
+            archetype,
+            fear_scores: fearScores,
+            consent_given: consentGiven,
+          }),
+        },
+      )
+
+      if (!insertRes.ok) {
+        const errText = await insertRes.text()
+        throw new Error(`quiz_responses insert failed (${insertRes.status}): ${errText}`)
+      }
+    } catch (err) {
+      console.error('quiz-subscribe: quiz_responses insert error', err)
+      return new Response(JSON.stringify({ error: 'Failed to save quiz result' }), {
+        status: 500,
+        headers: { ...CORS, 'Content-Type': 'application/json' },
+      })
+    }
+)
