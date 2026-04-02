@@ -264,22 +264,29 @@ function FearQuizResultsPage() {
             </p>
           </div>
 
-          {/* Launch CTA */}
-          <div className="bg-amber-400/10 border-2 border-amber-400/30 rounded-xl p-6 mb-6 text-center">
+          {/* Launch status */}
+          <div className="bg-amber-400/10 border border-amber-400/30 rounded-xl p-6 mb-6 text-center">
             <p className="text-amber-400 text-sm font-semibold uppercase tracking-wider mb-2">
               Launch list — half price
             </p>
             <p className="text-white font-semibold text-lg mb-1">
-              Get half-price early access
+              You&apos;re already on the list
             </p>
             <p className="text-slate-400 text-sm mb-4">
-              Reserve my early access and get the book at the launch discount — before it goes to the public.
+              Your quiz signup already added you to the launch list, so you&apos;ll get your Fear Profile by email and hear first when the book goes live at the launch discount.
+            </p>
+          </div>
+
+          <div className="bg-slate-800/70 border border-slate-700 rounded-xl p-6 mb-6 text-center">
+            <h2 className="text-xl font-semibold text-white mb-2">Want a clearer read?</h2>
+            <p className="text-slate-300 text-sm sm:text-base mb-4">
+              The Third Tuesday Test is 10 questions designed to separate the financial question from the identity question. Print it. Fill it in. It takes 10 minutes.
             </p>
             <a
-              href="/launch"
-              className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-8 py-4 rounded-xl transition text-base sm:text-lg w-full sm:w-auto"
+              href="/thank-you?guide=third-tuesday-test"
+              className="inline-block bg-amber-500 text-slate-900 px-5 py-3 rounded-xl font-semibold hover:bg-amber-400 transition"
             >
-              Reserve my early access
+              Download the Third Tuesday Test — Free →
             </a>
           </div>
 

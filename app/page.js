@@ -61,6 +61,25 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-10 section-alt">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-amber-100 border border-amber-200 rounded-2xl p-6 sm:p-8">
+            <div className="max-w-3xl">
+              <p className="text-sm uppercase tracking-widest text-amber-700 mb-3 font-semibold">Free: The NI Decision Matrix</p>
+              <p className="text-lg text-slate-800 mb-5">
+                Should you buy missing National Insurance years? This one-page decision tool walks you through the four questions — in the right order — before you spend £907 per year.
+              </p>
+              <Link
+                href="/thank-you?guide=ni-decision-matrix"
+                className="inline-block bg-amber-500 text-slate-900 px-6 py-3 rounded-xl font-bold hover:bg-amber-400 transition shadow-sm"
+              >
+                Download the NI Decision Matrix — Free →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* What The Book Covers */}
       <section className="py-24 section-alt">
         <div className="max-w-4xl mx-auto px-6">
