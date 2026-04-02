@@ -243,7 +243,10 @@ Deno.serve(async (req: Request) => {
         { headers: { 'apikey': supabaseKey, 'Authorization': `Bearer ${supabaseKey}` } },
       )
       const fetchData = await fetchRes.json()
-      responseId = Array.isArray(fetchData) && fetchData.length > 0 ? fetchData[0].id : 'unknown'
+      if (!Array.isArray(fetchData) || fetchData.length === 0 || !fetchData[0].id) {
+        throw new Error('marketing_leads upsert did not return or persist a row')
+      }
+      responseId = fetchData[0].id
     }
   } catch (err) {
     console.error('quiz-subscribe: marketing_leads insert error', err)

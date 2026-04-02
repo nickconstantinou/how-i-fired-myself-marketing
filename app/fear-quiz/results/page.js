@@ -55,7 +55,7 @@ const ARCHETYPES = {
 // ── Supabase fetch ─────────────────────────────────────────────────────────────
 
 /**
- * Fetches archetype result from Supabase by response UUID.
+ * Fetches quiz result from Supabase by quiz_responses UUID.
  * Returns null on failure — results page handles gracefully.
  * @param {string} id
  * @returns {Promise<{archetype: string, scores: object}|null>}
@@ -66,7 +66,7 @@ async function fetchResult(id) {
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
     const res = await fetch(
-      `${supabaseUrl}/rest/v1/marketing_leads?id=eq.${encodeURIComponent(id)}&select=id,metadata,email,created_at&limit=1`,
+      `${supabaseUrl}/rest/v1/quiz_responses?id=eq.${encodeURIComponent(id)}&select=id,archetype,fear_scores,created_at&limit=1`,
       {
         headers: {
           'apikey': supabaseKey,
@@ -81,8 +81,8 @@ async function fetchResult(id) {
     if (!Array.isArray(data) || data.length === 0) return null
     const row = data[0]
     return {
-      archetype: row.metadata?.archetype,
-      scores: row.metadata?.fear_scores,
+      archetype: row.archetype,
+      scores: row.fear_scores,
     }
   } catch {
     return null
