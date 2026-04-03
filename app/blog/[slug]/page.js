@@ -2,6 +2,31 @@ import Link from 'next/link'
 import { BLOG_INDEX, getBlogMeta } from '../../lib/blogIndex'
 const BASE_URL = 'https://nickconstantinou.github.io/the-anti-retirement-guide-marketing'
 
+const UK_REPLACEMENTS = [
+  [/financial math/gi, 'financial planning'],
+  [/vacation/gi, 'holiday'],
+  [/reorganize/gi, 'reorganise'],
+  [/nonprofit/gi, 'charity'],
+  [/golfing/gi, 'playing golf'],
+  [/Financial advisors/gi, 'Financial advisers'],
+  [/financial advisors/gi, 'financial advisers'],
+  [/advisor/gi, 'adviser'],
+  [/Social Security/gi, 'the State Pension'],
+  [/401\(k\)s and IRAs/gi, 'defined contribution pensions and ISAs'],
+  [/401\(k\)/gi, 'defined contribution pension'],
+  [/IRAs/gi, 'ISAs'],
+  [/college roommate/gi, 'university friend'],
+  [/neighbor/gi, 'neighbour'],
+  [/centered/gi, 'centred'],
+  [/organize/gi, 'organise'],
+  [/air conditioning/gi, 'the air conditioning'],
+  [/annuity-like products/gi, 'annuity-style products'],
+]
+
+function localiseForUK(text) {
+  return UK_REPLACEMENTS.reduce((current, [pattern, replacement]) => current.replace(pattern, replacement), text)
+}
+
 export function generateMetadata({ params }) {
   const title = getBlogMeta(params.slug)?.metaTitle || 'Blog Post'
   const desc = 'Reflections on retirement, identity, and designing your next chapter. For people in their 50s and 60s based in the UK.'
@@ -2123,23 +2148,33 @@ const posts = {
 }
 
 export default function BlogPost({ params }) {
-  const post = posts[params.slug] || { title: 'Post Not Found', content: '' }
+  const post = posts[params.slug] || { title: 'Post Not Found', content: '', excerpt: '' }
+  const localisedTitle = localiseForUK(post.title)
+  const localisedExcerpt = localiseForUK(post.excerpt)
+  const localisedContent = localiseForUK(post.content)
   
   return (
-    <main className="py-16">
-      <article className="max-w-3xl mx-auto px-4">
+    <main className="py-16 sm:py-20 bg-stone-50">
+      <article className="max-w-3xl mx-auto px-4 sm:px-6">
         <Link 
           href="/blog" 
-          className="inline-flex items-center text-amber-600 hover:text-amber-700 mb-8 font-medium transition-colors"
+          className="inline-flex items-center text-amber-700 hover:text-amber-800 mb-8 font-medium transition-colors"
         >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
           Back to Blog
         </Link>
-        <h1 className="text-4xl font-bold mb-4 text-slate-900">{post.title}</h1>
-        <p className="text-xl text-slate-600 mb-8">{post.excerpt}</p>
-        <div className="prose-lg text-slate-700" dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div className="bg-white border border-stone-200 rounded-[32px] shadow-sm px-6 py-8 sm:px-10 sm:py-12 lg:px-14 lg:py-14">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-amber-700 font-semibold mb-4">
+            UK retirement essays
+          </p>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-5 text-slate-900 leading-tight">{localisedTitle}</h1>
+          <p className="text-xl sm:text-2xl text-slate-600 mb-10 leading-relaxed" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: 'italic' }}>
+            {localisedExcerpt}
+          </p>
+          <div className="article-body" dangerouslySetInnerHTML={{ __html: localisedContent }} />
+        </div>
       </article>
     </main>
   )

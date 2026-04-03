@@ -10,13 +10,20 @@ const CORS = {
 
 const BASE_URL = 'https://theantiretirementguide.co.uk'
 
-const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; title: string; desc: string; cta: string }> = {
+const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; title: string; desc: string; cta: string; bookAngle: string; bookBullets: string[]; bookCta: string }> = {
   'cluster-a': {
     pdf: `${BASE_URL}/spouse-conversation-guide.pdf`,
     subject: (n) => `Your Spouse Conversation Guide is here, ${n}`,
     title: 'The Spouse Conversation Guide',
     desc: 'Five questions that change the shape of the conversation — away from the spreadsheet and toward what actually needs to be said.',
     cta: 'Download your guide',
+    bookAngle: 'If this guide lands, the full book will help you handle the part couples usually avoid: different timelines, different fears, and the emotional negotiation underneath the pension chat.',
+    bookBullets: [
+      'A full chapter on the spouse conversation most couples postpone for years',
+      'How to tell a numbers disagreement from an identity disagreement',
+      'What retirement changes inside a marriage after the practical planning is done',
+    ],
+    bookCta: 'Join the reader list',
   },
   'cluster-b': {
     pdf: `${BASE_URL}/loneliness-after-work.pdf`,
@@ -24,6 +31,13 @@ const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; t
     title: 'Loneliness After Work',
     desc: 'An honest look at what happens to your social life when work ends — and three things that consistently help.',
     cta: 'Download your guide',
+    bookAngle: 'If the social side of leaving is what worries you, the book goes much further into structure, belonging, and the quiet loneliness people rarely admit before they retire.',
+    bookBullets: [
+      'How to map the hidden social scaffolding work currently provides',
+      'Why “just join a club” is not good enough for most readers',
+      'How to build year-one structure before the silence arrives',
+    ],
+    bookCta: 'Join the reader list',
   },
   'cluster-c': {
     pdf: `${BASE_URL}/what-i-actually-want.pdf`,
@@ -31,13 +45,27 @@ const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; t
     title: 'What I Actually Want',
     desc: 'Twelve questions designed to cut through the noise and get to something real about what you want from your next chapter.',
     cta: 'Download your guide',
+    bookAngle: 'If clarity is the real issue, the book is built for exactly that moment: when the money may be close enough but the future still has no convincing shape.',
+    bookBullets: [
+      'A practical framework for designing year one before day one arrives',
+      'The identity questions high-achievers are usually least prepared for',
+      'How to tell the difference between caution and avoidance',
+    ],
+    bookCta: 'Join the reader list',
   },
   'launch': {
     pdf: '',
     subject: (n) => `You're on the list — The Anti-Retirement Guide launches soon`,
     title: 'The Anti-Retirement Guide',
-    desc: "You're on the launch list. We'll email you the moment pre-orders open — at the launch discount, before it goes public.",
+    desc: "You're on the reader list. We'll email you when the book is available, along with any early-reader news worth sending.",
     cta: 'View launch page',
+    bookAngle: 'This book is for people who are financially close, emotionally stuck, and tired of being told retirement is solved by golf, gratitude, and a better spreadsheet.',
+    bookBullets: [
+      'The fear audit: what is actually stopping you from moving',
+      'The spouse conversation, identity shift, and social reality of leaving',
+      'A month-by-month approach to building a credible life after work',
+    ],
+    bookCta: 'View the reader page',
   },
   'cluster-d': {
     pdf: `${BASE_URL}/jumpstart-guide.pdf`,
@@ -45,6 +73,13 @@ const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; t
     title: 'The 7-Day Jumpstart Guide',
     desc: 'Seven focused mornings to help you name what is actually stopping you and give shape to what comes after work.',
     cta: 'Download your guide',
+    bookAngle: 'This guide is the short version. The book is the full argument, framework, and set of decisions underneath it for readers who know the real issue is bigger than one worksheet.',
+    bookBullets: [
+      'How to separate money fear from identity fear',
+      'What to do when the numbers work and you still cannot move',
+      'How to give a future life enough shape to trust',
+    ],
+    bookCta: 'Join the reader list',
   },
   'nhs-manager': {
     pdf: `${BASE_URL}/nhs-manager-exit-checklist.pdf`,
@@ -52,6 +87,13 @@ const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; t
     title: "The NHS Manager's Exit Checklist",
     desc: 'A practical guide to the pension rules, timing questions, and identity shift that sit underneath leaving the NHS.',
     cta: 'Download your guide',
+    bookAngle: 'If you are navigating an NHS exit, the book helps with the harder part after the pension mechanics: who you are when the institution no longer structures your days.',
+    bookBullets: [
+      'What retirement feels like when the system has been your identity as well as your employer',
+      'How to handle purpose, structure, and usefulness after a high-responsibility role',
+      'How to prepare your first year instead of improvising it under stress',
+    ],
+    bookCta: 'Join the reader list',
   },
   teacher: {
     pdf: `${BASE_URL}/teacher-exit-checklist.pdf`,
@@ -59,6 +101,13 @@ const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; t
     title: "The Teacher's Guide to the Final Bell",
     desc: 'A focused guide to the pension checkpoints, timing decisions, and identity questions that come with leaving the classroom.',
     cta: 'Download your guide',
+    bookAngle: 'If the timetable has been carrying more of your identity than you realised, the book will help you think beyond the pension date and into the life that replaces the school year.',
+    bookBullets: [
+      'The identity shift after a role built around rhythm, service, and usefulness',
+      'How to avoid swapping the timetable for drift',
+      'The conversations and preparations most teachers leave too late',
+    ],
+    bookCta: 'Join the reader list',
   },
   'finance-director': {
     pdf: `${BASE_URL}/finance-director-exit-checklist.pdf`,
@@ -66,6 +115,13 @@ const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; t
     title: "The Finance Director's Exit Checklist",
     desc: 'For the moment when the numbers work but the decision still does not settle, covering sequencing, tax, and the harder question underneath them.',
     cta: 'Download your guide',
+    bookAngle: 'If you are analytically sophisticated and still stuck, the book is designed for the exact point where more modelling stops helping and the psychological barrier takes over.',
+    bookBullets: [
+      'Why competent people keep hiding in the spreadsheet',
+      'How to test whether this is really a finance problem at all',
+      'What a convincing post-work life needs besides tax efficiency',
+    ],
+    bookCta: 'Join the reader list',
   },
   'ni-decision-matrix': {
     pdf: `${BASE_URL}/ni-decision-matrix.pdf`,
@@ -73,6 +129,13 @@ const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; t
     title: 'The NI Decision Matrix',
     desc: 'A decision framework for working out whether buying missing National Insurance years actually changes your outcome.',
     cta: 'Download your guide',
+    bookAngle: 'If you care about getting the detail right, the book complements this kind of practical decision with the part most retirement guidance skips: what the numbers are actually for.',
+    bookBullets: [
+      'How to stop practical pension questions becoming a hiding place',
+      'The emotional blockers that survive after the detail is sorted',
+      'A framework for moving from technical readiness to personal readiness',
+    ],
+    bookCta: 'Join the reader list',
   },
   'third-tuesday-test': {
     pdf: `${BASE_URL}/third-tuesday-test.pdf`,
@@ -80,6 +143,13 @@ const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; t
     title: 'The Third Tuesday Test',
     desc: 'A short guide to the question that exposes whether you are actually ready to leave work or still avoiding the real issue.',
     cta: 'Download your guide',
+    bookAngle: 'If the Third Tuesday question hits home, the full book expands it into a complete way of thinking about readiness, fear, and life-shape after work.',
+    bookBullets: [
+      'How to tell whether you are delaying wisely or merely delaying',
+      'The identity, spouse, and purpose questions behind the test',
+      'How to design a first year you can actually believe in',
+    ],
+    bookCta: 'Join the reader list',
   },
   default: {
     pdf: `${BASE_URL}/jumpstart-guide.pdf`,
@@ -87,11 +157,22 @@ const GUIDES: Record<string, { pdf: string; subject: (name: string) => string; t
     title: 'The First Week Guide',
     desc: 'A practical framework for structuring your first week out of work so you don\'t just drift — you start building the life you actually want.',
     cta: 'Download your guide',
+    bookAngle: 'If this guide helps, the book takes the same honest approach across the whole retirement transition: fear, identity, relationships, money, and the shape of everyday life after work.',
+    bookBullets: [
+      'The fears most people mislabel as “not quite ready yet”',
+      'How to build a future life that feels credible rather than decorative',
+      'Why the emotional side of retirement deserves the same rigour as the spreadsheet',
+    ],
+    bookCta: 'Join the reader list',
   },
 }
 
-function buildGuideEmailHtml(firstName: string, guide: { pdf: string; title: string; desc: string; cta: string }, email: string) {
+function buildGuideEmailHtml(firstName: string, guide: { pdf: string; title: string; desc: string; cta: string; bookAngle: string; bookBullets: string[]; bookCta: string }, email: string) {
   const actionUrl = guide.pdf || `${BASE_URL}/launch`
+  const readerUrl = `${BASE_URL}/launch`
+  const bookBullets = guide.bookBullets
+    .map((bullet) => `<li style="margin-bottom: 10px;">${bullet}</li>`)
+    .join('')
 
   return `<!DOCTYPE html>
 <html>
@@ -117,8 +198,23 @@ function buildGuideEmailHtml(firstName: string, guide: { pdf: string; title: str
     </a>
   </div>
 
+  <div style="background: #fff7ed; border: 1px solid #fdba74; border-radius: 14px; padding: 22px 24px; margin: 32px 0;">
+    <p style="font-size: 13px; color: #9a3412; text-transform: uppercase; letter-spacing: 0.12em; font-weight: bold; margin: 0 0 10px;">
+      Why the book is worth reading
+    </p>
+    <p style="font-size: 15px; color: #431407; line-height: 1.8; margin: 0 0 14px;">
+      ${guide.bookAngle}
+    </p>
+    <ul style="font-size: 15px; color: #7c2d12; line-height: 1.7; padding-left: 20px; margin: 0 0 20px;">
+      ${bookBullets}
+    </ul>
+    <a href="${readerUrl}" style="display: inline-block; background: #1e293b; color: white; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-size: 15px; font-weight: bold;">
+      ${guide.bookCta}
+    </a>
+  </div>
+
   <p style="font-size: 15px; color: #444; line-height: 1.8;">
-    Reply to this email any time if you have questions.
+    If the guide feels uncomfortably accurate, that is a good sign. It usually means the full book will land too.
   </p>
   <p style="font-size: 15px; color: #444; line-height: 1.8;">Nick</p>
   <hr style="border:none;border-top:1px solid #eee;margin:24px 0"/>
